@@ -1,14 +1,9 @@
 import React from "react"
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
 
 import './globals.css'
-import { TextScaleProvider } from '@/components/text-scale-provider'
-
-const inter = Inter({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-inter',
-})
+import { LanguageProvider } from "@/components/language-provider"
+import { MagnifierProvider } from "@/components/magnifier-provider"
 
 export const metadata: Metadata = {
   title: 'ALAU — Твой потенциал ярче, чем ты думаешь',
@@ -28,9 +23,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className={inter.variable}>
+    <html lang="ru">
       <body className="min-h-screen font-sans antialiased">
-        <TextScaleProvider>{children}</TextScaleProvider>
+        <LanguageProvider>
+          <MagnifierProvider>{children}</MagnifierProvider>
+        </LanguageProvider>
       </body>
     </html>
   )

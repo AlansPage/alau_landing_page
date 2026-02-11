@@ -1,54 +1,52 @@
+"use client"
+
 import { Eye, Ear, Hand, Brain } from "lucide-react"
 
-const audienceCards = [
-  {
-    icon: Eye,
-    title: "Зрение",
-    description: "Озвучиваем всё. Есть аудиокурсы",
-    ariaLabel: "Для людей с нарушением зрения",
-  },
-  {
-    icon: Ear,
-    title: "Слух",
-    description: "Везде есть субтитры и сурдоперевод",
-    ariaLabel: "Для людей с нарушением слуха",
-  },
-  {
-    icon: Hand,
-    title: "Моторика",
-    description: "Удобно управлять одной рукой или голосом",
-    ariaLabel: "Для людей с нарушением моторики",
-  },
-  {
-    icon: Brain,
-    title: "Нейро",
-    description: "Спокойный дизайн без мигания",
-    ariaLabel: "Для людей с нейроособенностями",
-  },
-] as const
+import { getI18n } from "@/lib/i18n"
+import { useLanguage } from "@/components/language-provider"
+
+const audienceIcons = [Eye, Ear, Hand, Brain] as const
 
 export function AudienceSection() {
+  const { lang } = useLanguage()
+  const copy = getI18n(lang).audience
+  const audienceCards = copy.cards.map((card, index) => ({
+    icon: audienceIcons[index],
+    ...card,
+  }))
+
   return (
     <section
       aria-labelledby="audience-heading"
-      className="px-6 py-24 md:py-32 lg:px-8"
+      className="anchor-target relative px-6 py-24 md:py-32 lg:px-8"
+      id="audience"
     >
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute left-1/2 top-10 h-64 w-[420px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
+      </div>
       <div className="mx-auto max-w-6xl">
         <h2
           id="audience-heading"
-          className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          className="reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          data-reveal
         >
-          {"Для кого мы?"}
+          {copy.title}
         </h2>
 
         {/* Soft surface panel behind cards (airy / EPAM-like rhythm) */}
-        <div className="mt-14 rounded-[2.5rem] bg-surface/70 p-6 sm:p-8 lg:p-10">
+        <div
+          className="reveal mt-14 rounded-[2.5rem] border border-border/40 bg-surface/70 p-6 shadow-xl shadow-background/50 sm:p-8 lg:p-10"
+          style={{ transitionDelay: "120ms" }}
+          data-reveal
+        >
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {audienceCards.map((card, idx) => (
               <article
                 key={card.title}
                 aria-label={card.ariaLabel}
-                className="relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-colors hover:border-primary/30"
+                className="reveal hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-colors hover:border-primary/30"
+                style={{ transitionDelay: `${220 + idx * 90}ms` }}
+                data-reveal
               >
                 {/* Decorative background pattern */}
                 <div
@@ -73,7 +71,7 @@ export function AudienceSection() {
                   </svg>
                 </div>
 
-              {/* Icon in rounded square container */}
+                {/* Icon in rounded square container */}
                 <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
                   <card.icon
                     className="h-7 w-7 text-primary"

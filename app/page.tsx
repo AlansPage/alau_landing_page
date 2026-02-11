@@ -4,6 +4,7 @@ import { HowItWorksSection } from "@/components/how-it-works-section"
 import { NavigatorSection } from "@/components/navigator-section"
 import { FooterSection } from "@/components/footer-section"
 import { SiteHeader } from "@/components/site-header"
+import { RevealInitializer } from "@/components/reveal-initializer"
 
 export default function Page() {
   return (
@@ -14,6 +15,7 @@ export default function Page() {
       </a>
 
       <SiteHeader />
+      <RevealInitializer />
 
       <main id="main-content">
         <HeroSection />

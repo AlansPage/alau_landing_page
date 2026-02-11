@@ -50,7 +50,19 @@ Do not add CTAs, do not add sections, do not change required RU copy.
 Return changed files only.
 ```
 
-## 3) Partners area upgrade (still inside footer)
+## 3) Motion polish (respect prefers-reduced-motion)
+
+```text
+Implement the next step only:
+
+- Add subtle, tasteful animations: staggered reveals for cards, gentle parallax on decorative SVGs, and hover/press micro-interactions.
+- Respect prefers-reduced-motion by disabling or simplifying animations when requested.
+- Do not introduce new content, CTAs, or sections. Keep required RU copy unchanged.
+
+Return minimal diffs only.
+```
+
+## 4) Partners area upgrade (still inside footer)
 
 ```text
 Improve the footer partners grid (still inside Footer):
@@ -59,7 +71,7 @@ Improve the footer partners grid (still inside Footer):
 Return minimal diffs only.
 ```
 
-## 4) Strict accessibility audit pass
+## 5) Strict accessibility audit pass
 
 ```text
 Perform a WCAG 2.2 AA oriented audit and implement fixes as minimal diffs:
@@ -73,7 +85,7 @@ Do not change required copy or add sections/CTAs.
 Return changed files only.
 ```
 
-## 5) Add a “text size” enhancement (only if requested)
+## 6) Add a “text size” enhancement (only if requested)
 
 ```text
 Enhance the magnifying-glass text scaling control:
