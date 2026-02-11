@@ -17,17 +17,16 @@ export function AudienceSection() {
 
   return (
     <section
-      aria-labelledby="audience-heading"
-      className="anchor-target relative px-6 py-24 md:py-32 lg:px-8"
-      id="audience"
+      aria-labelledby="audience"
+      className="relative px-6 py-24 md:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/2 top-10 h-64 w-[420px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
       </div>
       <div className="mx-auto max-w-6xl">
         <h2
-          id="audience-heading"
-          className="reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          id="audience"
+          className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
           data-reveal
         >
           {copy.title}

@@ -1,12 +1,10 @@
 "use client"
 
-import { Flame, Sparkles, Accessibility, ArrowRight } from "lucide-react"
+import { Flame, Sparkles, Accessibility, PanelsTopLeft } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
-
-const featureIcons = [Sparkles, Accessibility, ArrowRight] as const
 
 function HeroCollage({ copy }: { copy: ReturnType<typeof getI18n>["hero"] }) {
   return (
@@ -15,68 +13,44 @@ function HeroCollage({ copy }: { copy: ReturnType<typeof getI18n>["hero"] }) {
       aria-hidden="true"
       role="presentation"
     >
-      <div className="relative h-[420px] w-[360px] lg:h-[480px] lg:w-[420px]">
-        {/* Big tile */}
-        <div className="float-slow absolute left-0 top-0 flex h-52 w-52 items-center justify-center rounded-[2rem] border border-border/40 bg-card shadow-xl shadow-background/40 lg:h-60 lg:w-60">
-          <div className="flex h-24 w-24 items-center justify-center rounded-3xl bg-primary/10">
-            <Flame className="h-12 w-12 text-primary" />
+      <div className="relative h-[420px] w-[360px] lg:h-[500px] lg:w-[430px]">
+        <div className="hero-glow hero-tile-c absolute left-8 top-12 h-[320px] w-[300px] rounded-[2.2rem] border border-border/45 bg-card/95 shadow-[0_28px_70px_hsl(var(--foreground)/0.1)] lg:left-12 lg:top-16 lg:h-[360px] lg:w-[320px]">
+          <div className="absolute inset-0 rounded-[2.2rem] bg-[linear-gradient(140deg,hsl(212_100%_47%/.12),transparent_45%,hsl(200_100%_44%/.08))]" />
+          <div className="absolute left-6 right-6 top-6 h-10 rounded-2xl border border-border/35 bg-background/90" />
+          <div className="absolute left-6 right-6 top-20 rounded-3xl border border-primary/20 bg-primary/10 p-5">
+            <div className="h-2.5 w-[72%] rounded-full bg-primary/50" />
+            <div className="mt-3 h-2 w-[60%] rounded-full bg-primary/35" />
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="h-16 rounded-2xl border border-border/40 bg-background/85" />
+              <div className="h-16 rounded-2xl border border-border/40 bg-background/85" />
+            </div>
           </div>
+          <div className="absolute left-6 right-6 top-[17.1rem] h-1.5 rounded-full bg-accent/45 lg:top-[18.8rem]" />
         </div>
 
-        {/* Label tile (no numeric claims) */}
-        <div className="float-slower absolute right-0 top-10 flex h-36 w-40 flex-col items-start justify-end rounded-[1.75rem] border border-primary/20 bg-primary/5 p-6 lg:h-40 lg:w-44">
-          <span className="text-xl font-extrabold text-foreground">
+        <div className="hero-glow hero-tile-a hero-tile-hover absolute left-0 top-14 flex h-20 w-40 items-center gap-3 rounded-2xl border border-primary/25 bg-card/95 px-4 shadow-lg shadow-background/40">
+          <Sparkles className="h-4 w-4 shrink-0 text-primary" />
+          <span className="text-xs font-semibold leading-tight text-foreground">
             {copy.collage.accessibleTitle}
           </span>
-          <span className="mt-1 text-sm font-medium text-muted-foreground">
+        </div>
+
+        <div className="hero-glow hero-tile-b hero-tile-hover absolute right-1 top-12 flex h-20 w-40 items-center gap-3 rounded-2xl border border-accent/25 bg-card/95 px-4 shadow-lg shadow-background/40 lg:top-14">
+          <Accessibility className="h-4 w-4 shrink-0 text-accent" />
+          <span className="text-xs font-semibold leading-tight text-foreground">
+            {copy.collage.calmTitle}
+          </span>
+        </div>
+
+        <div className="hero-glow hero-tile-b hero-tile-hover absolute left-2 top-[17.8rem] flex h-20 w-44 items-center gap-3 rounded-2xl border border-border/40 bg-card/95 px-4 shadow-lg shadow-background/35 lg:top-[20.1rem]">
+          <PanelsTopLeft className="h-4 w-4 shrink-0 text-primary" />
+          <span className="text-xs font-semibold leading-tight text-foreground">
             {copy.collage.accessibleSubtitle}
           </span>
         </div>
 
-        {/* Illustration tile (abstract svg) */}
-        <div className="float-slow absolute left-10 top-56 h-32 w-44 overflow-hidden rounded-[1.75rem] border border-border/40 bg-card shadow-lg shadow-background/30 lg:top-64 lg:h-36 lg:w-52">
-          <svg
-            viewBox="0 0 240 160"
-            className="h-full w-full"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="hsl(212 100% 47% / 0.20)" />
-                <stop offset="1" stopColor="hsl(200 100% 44% / 0.10)" />
-              </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="240" height="160" fill="url(#g1)" />
-            <path
-              d="M-10 120 C 40 60, 90 160, 140 100 S 240 80, 260 40"
-              fill="none"
-              stroke="hsl(212 100% 47% / 0.55)"
-              strokeWidth="6"
-              strokeLinecap="round"
-            />
-            <path
-              d="M-10 90 C 50 40, 110 130, 150 70 S 230 60, 260 20"
-              fill="none"
-              stroke="hsl(200 100% 44% / 0.35)"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
-        {/* Calm tile */}
-        <div className="float-slower absolute bottom-0 right-6 flex h-40 w-56 flex-col items-start justify-end rounded-[2rem] border border-accent/20 bg-accent/5 p-7 lg:h-44 lg:w-64">
-          <span className="text-xl font-extrabold text-foreground">
-            {copy.collage.calmTitle}
-          </span>
-          <span className="mt-1 text-sm font-medium text-muted-foreground">
-            {copy.collage.calmSubtitle}
-          </span>
-        </div>
-
-        {/* Small sparkle tile */}
-        <div className="float-slow absolute right-44 top-48 flex h-20 w-20 items-center justify-center rounded-3xl border border-border/40 bg-card shadow-md shadow-background/25 lg:right-52 lg:top-52">
-          <Sparkles className="h-7 w-7 text-primary" />
+        <div className="hero-glow hero-tile-a hero-tile-hover absolute right-3 top-[18.4rem] flex h-24 w-24 items-center justify-center rounded-3xl border border-border/40 bg-card/95 shadow-lg shadow-background/35 lg:top-[21rem]">
+          <Flame className="h-9 w-9 text-primary" />
         </div>
       </div>
     </div>
@@ -86,17 +60,11 @@ function HeroCollage({ copy }: { copy: ReturnType<typeof getI18n>["hero"] }) {
 export function HeroSection() {
   const { lang } = useLanguage()
   const copy = getI18n(lang).hero
-  const featureTiles = copy.features.map((feature, index) => ({
-    icon: featureIcons[index],
-    title: feature.title,
-    description: feature.description,
-  }))
 
   return (
     <section
       aria-labelledby="hero-heading"
-      className="anchor-target relative overflow-hidden px-6 pb-24 pt-16 md:pb-32 md:pt-24 lg:px-8"
-      id="hero"
+      className="hero relative overflow-hidden px-6 pb-24 pt-16 md:pb-32 md:pt-20 lg:px-8"
     >
       {/* Background glow layers */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -104,12 +72,12 @@ export function HeroSection() {
         <div className="absolute -bottom-32 right-0 h-[400px] w-[600px] rounded-full bg-accent/5 blur-[100px]" />
       </div>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-16 md:flex-row md:items-center md:gap-20">
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 md:grid-cols-[1.08fr_0.92fr] md:gap-10 lg:gap-16">
         {/* Text content */}
-        <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <h1
             id="hero-heading"
-            className="reveal text-balance text-5xl font-extrabold leading-[1.1] tracking-tight text-foreground md:text-6xl lg:text-7xl"
+            className="anchor-target-zero hero-title reveal max-w-[14ch] text-balance text-5xl font-extrabold leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
             data-reveal
           >
             {copy.titlePrefix}
@@ -117,46 +85,20 @@ export function HeroSection() {
             {copy.titleSuffix}
           </h1>
           <p
-            className="reveal mt-8 max-w-lg text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="subhead hero-subhead reveal mt-8 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl"
             style={{ transitionDelay: "120ms" }}
             data-reveal
           >
             {copy.subtitle}
           </p>
 
-          {/* Small feature tiles (no extra CTAs) */}
-          <div className="mt-10 grid w-full max-w-xl grid-cols-1 gap-4 sm:grid-cols-3">
-            {featureTiles.map((tile, index) => (
-              <div
-                key={tile.title}
-                className="reveal hover-lift rounded-2xl border border-border/40 bg-card px-5 py-4 shadow-sm shadow-background/30"
-                style={{ transitionDelay: `${200 + index * 90}ms` }}
-                data-reveal
-              >
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-                    <tile.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-bold text-foreground">
-                      {tile.title}
-                    </p>
-                    <p className="mt-1 text-sm leading-snug text-muted-foreground">
-                      {tile.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
           <a
             href={LINKS.telegramBot}
             target="_blank"
             rel="noopener noreferrer"
-            className="reveal hover-lift press-pop group mt-12 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_60px_hsl(212_100%_55%/0.35)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
+            className="interactive-ease reveal hover-lift press-pop group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_60px_hsl(212_100%_55%/0.35)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
             aria-label={copy.ctaAria}
-            style={{ transitionDelay: "380ms" }}
+            style={{ transitionDelay: "260ms" }}
             data-reveal
           >
             <Flame

@@ -14,9 +14,8 @@ export function FooterSection() {
 
   return (
     <footer
-      className="anchor-target border-t border-border/30 px-6 py-16 md:py-20 lg:px-8"
+      className="border-t border-border/30 px-6 py-16 md:py-20 lg:px-8"
       role="contentinfo"
-      id="contacts"
     >
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
@@ -57,7 +56,7 @@ export function FooterSection() {
 
           {/* Contacts / social links */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <h3 id="contacts" className="anchor-target text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               {copy.contactsTitle}
             </h3>
             <address className="text-sm not-italic leading-relaxed text-muted-foreground">
@@ -71,7 +70,7 @@ export function FooterSection() {
                 href={SOCIALS.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                className="interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 aria-label={copy.socialItems.telegram}
               >
                 <Send className="h-5 w-5" aria-hidden="true" />
@@ -80,7 +79,7 @@ export function FooterSection() {
                 href={SOCIALS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                className="interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 aria-label={copy.socialItems.instagram}
               >
                 <Instagram className="h-5 w-5" aria-hidden="true" />
@@ -89,7 +88,7 @@ export function FooterSection() {
                 href={SOCIALS.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                className="interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
                 aria-label={copy.socialItems.youtube}
               >
                 <Youtube className="h-5 w-5" aria-hidden="true" />

@@ -8,95 +8,37 @@ import { useLanguage } from "@/components/language-provider"
 type MagnifierContextValue = {
   enabled: boolean
   toggle: () => void
+  setToggleButtonEl: (el: HTMLButtonElement | null) => void
 }
 
 const MagnifierContext = createContext<MagnifierContextValue | null>(null)
 
-type LensState = {
-  visible: boolean
-  text: string
-  x: number
-  y: number
-}
-
-const SNIPPET_MIN = 80
-const SNIPPET_MAX = 140
-const LENS_OFFSET = 18
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max)
-}
-
-function expandToWordBoundaries(text: string, start: number, end: number) {
-  const isBoundary = (ch: string) => ch === " " || ch === "\n" || ch === "\t"
-  let s = start
-  let e = end
-  while (s > 0 && !isBoundary(text[s - 1])) s -= 1
-  while (e < text.length && !isBoundary(text[e])) e += 1
-  return { start: s, end: e }
-}
-
-function extractSnippet(text: string, offset: number) {
-  const safeText = text.replace(/\s+/g, " ").trim()
-  if (!safeText) return ""
-  const clampedOffset = clamp(offset, 0, safeText.length)
-  let start = Math.max(0, clampedOffset - Math.floor(SNIPPET_MIN / 2))
-  let end = Math.min(safeText.length, start + SNIPPET_MAX)
-  if (end - start < SNIPPET_MIN) {
-    start = Math.max(0, end - SNIPPET_MIN)
-  }
-  const bounds = expandToWordBoundaries(safeText, start, end)
-  return safeText.slice(bounds.start, bounds.end)
-}
-
-function getCaretResult(x: number, y: number) {
-  if (typeof document.caretPositionFromPoint === "function") {
-    const pos = document.caretPositionFromPoint(x, y)
-    if (pos && pos.offsetNode && pos.offsetNode.nodeType === Node.TEXT_NODE) {
-      return { node: pos.offsetNode as Text, offset: pos.offset }
-    }
-  }
-  const rangeFromPoint = (document as Document & {
-    caretRangeFromPoint?: (x: number, y: number) => Range | null
-  }).caretRangeFromPoint
-  if (typeof rangeFromPoint === "function") {
-    const range = rangeFromPoint(x, y)
-    if (range && range.startContainer.nodeType === Node.TEXT_NODE) {
-      return { node: range.startContainer as Text, offset: range.startOffset }
-    }
-  }
-  return null
-}
-
-function getPointerLensPosition(x: number, y: number, lensWidth: number, lensHeight: number) {
-  const padding = 12
-  const maxX = window.innerWidth - lensWidth - padding
-  const maxY = window.innerHeight - lensHeight - padding
-  let nextX = x + LENS_OFFSET
-  let nextY = y + LENS_OFFSET
-  if (nextX > maxX) nextX = x - lensWidth - LENS_OFFSET
-  if (nextY > maxY) nextY = y - lensHeight - LENS_OFFSET
-  nextX = clamp(nextX, padding, maxX)
-  nextY = clamp(nextY, padding, maxY)
-  return { x: nextX, y: nextY }
+function isTouchOnlyDevice() {
+  if (typeof window === "undefined") return false
+  return !window.matchMedia("(any-pointer: fine)").matches
 }
 
 export function MagnifierProvider({ children }: { children: React.ReactNode }) {
   const { lang } = useLanguage()
-  const [enabled, setEnabled] = useState(false)
-  const [lens, setLens] = useState<LensState>({ visible: false, text: "", x: 0, y: 0 })
+  const [enabled, setEnabledState] = useState(false)
+  const [touchUnsupported, setTouchUnsupported] = useState(false)
   const [hintVisible, setHintVisible] = useState(false)
   const hintTimeoutRef = useRef<number | null>(null)
+  const toggleButtonRef = useRef<HTMLButtonElement | null>(null)
   const lensRef = useRef<HTMLDivElement | null>(null)
+  const lensContentRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
+    setTouchUnsupported(isTouchOnlyDevice())
+  }, [])
+
+  useEffect(() => {
+    if (hintTimeoutRef.current) {
+      window.clearTimeout(hintTimeoutRef.current)
+      hintTimeoutRef.current = null
+    }
     if (!enabled) {
-      setLens((prev) => ({ ...prev, visible: false }))
       setHintVisible(false)
-      if (hintTimeoutRef.current) {
-        window.clearTimeout(hintTimeoutRef.current)
-        hintTimeoutRef.current = null
-      }
       return
     }
     setHintVisible(true)
@@ -106,40 +48,203 @@ export function MagnifierProvider({ children }: { children: React.ReactNode }) {
     }, 2000)
   }, [enabled])
 
+  const setEnabled = (next: boolean) => {
+    if (next && touchUnsupported) {
+      setHintVisible(true)
+      if (hintTimeoutRef.current) window.clearTimeout(hintTimeoutRef.current)
+      hintTimeoutRef.current = window.setTimeout(() => {
+        setHintVisible(false)
+        hintTimeoutRef.current = null
+      }, 2000)
+      return
+    }
+    setEnabledState(next)
+  }
+
+  const toggle = () => setEnabled(!enabled)
+  const setToggleButtonEl = (el: HTMLButtonElement | null) => {
+    toggleButtonRef.current = el
+  }
   useEffect(() => {
-    if (!enabled) return
-    const handler = (event: PointerEvent) => {
-      const { clientX, clientY } = event
-      const caret = getCaretResult(clientX, clientY)
-      if (!caret) {
-        setLens((prev) => ({ ...prev, visible: false }))
-        return
-      }
-      const text = caret.node.textContent ?? ""
-      const snippet = extractSnippet(text, caret.offset)
-      if (!snippet) {
-        setLens((prev) => ({ ...prev, visible: false }))
-        return
-      }
-      const lensRect = lensRef.current?.getBoundingClientRect()
-      const lensWidth = lensRect?.width ?? 320
-      const lensHeight = lensRect?.height ?? 120
-      const pos = getPointerLensPosition(clientX, clientY, lensWidth, lensHeight)
-      setLens({ visible: true, text: snippet, x: pos.x, y: pos.y })
+    const lens = lensRef.current
+    const content = lensContentRef.current
+    if (!lens || !content) return
+
+    if (!enabled || touchUnsupported) {
+      lens.style.setProperty("--lens-visible", "0")
+      document.documentElement.classList.remove("lens-mode")
+      return
     }
 
-    window.addEventListener("pointermove", handler)
+    document.documentElement.classList.add("lens-mode")
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const scale = 1.4
+    const radius = 90
+    const edgePad = 8
+    const keyboardStep = 18
+    let raf = 0
+    let alive = true
+    const pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 }
+    const current = { x: pointer.x, y: pointer.y }
+    let activeEl: HTMLElement | null = null
+
+    const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
+    const targetSelector =
+      "main h1, main h2, main h3, main p, main li, main a, footer h3, footer p, footer address, footer a"
+    const getTargetAtPoint = (x: number, y: number) => {
+      const el = document.elementFromPoint(x, y)
+      return el?.closest(targetSelector) as HTMLElement | null
+    }
+
+    const parseRgb = (color: string) => {
+      const match = color.match(/rgba?\(([^)]+)\)/i)
+      if (!match) return null
+      const parts = match[1].split(",").map((v) => Number.parseFloat(v.trim()))
+      if (parts.length < 3) return null
+      return { r: parts[0], g: parts[1], b: parts[2] }
+    }
+    const luminance = (r: number, g: number, b: number) => (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+
+    const hideLens = () => {
+      activeEl = null
+      lens.style.setProperty("--lens-visible", "0")
+    }
+
+    const syncFromTarget = (target: HTMLElement) => {
+      const text = (target.innerText || target.textContent || "").replace(/\s+/g, " ").trim()
+      if (!text) {
+        hideLens()
+        return false
+      }
+      const style = window.getComputedStyle(target)
+      content.textContent = text
+      content.style.fontFamily = style.fontFamily
+      content.style.fontWeight = style.fontWeight
+      content.style.fontSize = style.fontSize
+      content.style.letterSpacing = style.letterSpacing
+      content.style.lineHeight = style.lineHeight
+      content.style.textTransform = style.textTransform
+      content.style.fontStyle = style.fontStyle
+      content.style.textDecoration = style.textDecoration
+      content.style.whiteSpace = "pre-wrap"
+      content.style.wordBreak = "break-word"
+
+      const rgb = parseRgb(style.color)
+      const isLight = rgb ? luminance(rgb.r, rgb.g, rgb.b) > 0.72 : false
+      content.style.color = style.color
+      content.style.webkitTextFillColor = "currentColor"
+      if (isLight) {
+        lens.style.background = "hsl(var(--foreground) / 0.96)"
+        lens.style.borderColor = "hsl(var(--background) / 0.45)"
+        content.style.textShadow = "0 1px 3px rgba(0, 0, 0, 0.45)"
+      } else {
+        lens.style.background = "hsl(var(--background))"
+        lens.style.borderColor = "hsl(var(--primary) / 0.65)"
+        content.style.textShadow = "none"
+      }
+      activeEl = target
+      return true
+    }
+
+    const positionLens = (clientX: number, clientY: number) => {
+      if (!activeEl) return
+      const rect = activeEl.getBoundingClientRect()
+      const localX = clientX - rect.left
+      const localY = clientY - rect.top
+      content.style.width = `${Math.ceil(Math.max(rect.width, 140))}px`
+      content.style.minHeight = `${Math.ceil(Math.max(rect.height, 24))}px`
+      content.style.transform = `translate(${radius - localX * scale}px, ${radius - localY * scale}px) scale(${scale})`
+      content.style.transformOrigin = "0 0"
+      lens.style.setProperty("--lens-visible", "1")
+    }
+
+    const render = () => {
+      if (!alive) return
+      if (reduceMotion) {
+        current.x = pointer.x
+        current.y = pointer.y
+      } else {
+        current.x += (pointer.x - current.x) * 0.24
+        current.y += (pointer.y - current.y) * 0.24
+      }
+      lens.style.setProperty("--lens-left", `${current.x - radius}px`)
+      lens.style.setProperty("--lens-top", `${current.y - radius}px`)
+      raf = window.requestAnimationFrame(render)
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") {
+        hideLens()
+        return
+      }
+      pointer.x = clamp(event.clientX, radius + edgePad, window.innerWidth - radius - edgePad)
+      pointer.y = clamp(event.clientY, radius + edgePad, window.innerHeight - radius - edgePad)
+      const target = getTargetAtPoint(event.clientX, event.clientY)
+      if (!target) {
+        hideLens()
+        return
+      }
+      if (activeEl !== target) {
+        const ok = syncFromTarget(target)
+        if (!ok) return
+      }
+      positionLens(event.clientX, event.clientY)
+    }
+
+    const onPointerLeave = () => hideLens()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setEnabledState(false)
+        toggleButtonRef.current?.focus()
+        return
+      }
+      if (
+        event.key !== "ArrowUp" &&
+        event.key !== "ArrowDown" &&
+        event.key !== "ArrowLeft" &&
+        event.key !== "ArrowRight"
+      ) {
+        return
+      }
+      event.preventDefault()
+      if (!activeEl) {
+        const fallback = document.querySelector("main h1, main h2, main p") as HTMLElement | null
+        if (!fallback || !syncFromTarget(fallback)) return
+        const rect = fallback.getBoundingClientRect()
+        pointer.x = clamp(rect.left + rect.width / 2, radius + edgePad, window.innerWidth - radius - edgePad)
+        pointer.y = clamp(rect.top + rect.height / 2, radius + edgePad, window.innerHeight - radius - edgePad)
+      }
+      if (event.key === "ArrowUp") pointer.y = clamp(pointer.y - keyboardStep, radius + edgePad, window.innerHeight - radius - edgePad)
+      if (event.key === "ArrowDown") pointer.y = clamp(pointer.y + keyboardStep, radius + edgePad, window.innerHeight - radius - edgePad)
+      if (event.key === "ArrowLeft") pointer.x = clamp(pointer.x - keyboardStep, radius + edgePad, window.innerWidth - radius - edgePad)
+      if (event.key === "ArrowRight") pointer.x = clamp(pointer.x + keyboardStep, radius + edgePad, window.innerWidth - radius - edgePad)
+      positionLens(pointer.x, pointer.y)
+    }
+
+    window.addEventListener("pointermove", onPointerMove)
+    window.addEventListener("pointerleave", onPointerLeave)
+    window.addEventListener("pointercancel", onPointerLeave)
+    window.addEventListener("keydown", onKeyDown)
+    raf = window.requestAnimationFrame(render)
+
     return () => {
-      window.removeEventListener("pointermove", handler)
+      alive = false
+      window.cancelAnimationFrame(raf)
+      window.removeEventListener("pointermove", onPointerMove)
+      window.removeEventListener("pointerleave", onPointerLeave)
+      window.removeEventListener("pointercancel", onPointerLeave)
+      window.removeEventListener("keydown", onKeyDown)
+      document.documentElement.classList.remove("lens-mode")
+      lens.style.setProperty("--lens-visible", "0")
     }
-  }, [enabled])
-
-  const toggle = () => setEnabled((prev) => !prev)
+  }, [enabled, touchUnsupported])
 
   const value = useMemo<MagnifierContextValue>(
     () => ({
       enabled,
       toggle,
+      setToggleButtonEl,
     }),
     [enabled]
   )
@@ -147,19 +252,13 @@ export function MagnifierProvider({ children }: { children: React.ReactNode }) {
   return (
     <MagnifierContext.Provider value={value}>
       {children}
-      <div
-        className={`magnifier-hint ${hintVisible ? "is-visible" : ""}`}
-        aria-hidden="true"
-      >
-        {getI18n(lang).header.magnifierHint}
+      <div className={`magnifier-hint ${hintVisible ? "is-visible" : ""}`} aria-hidden="true">
+        {touchUnsupported && !enabled
+          ? "Magnifier works with mouse only"
+          : getI18n(lang).header.magnifierHint}
       </div>
-      <div
-        ref={lensRef}
-        className={`magnifier-lens ${lens.visible ? "is-visible" : ""}`}
-        style={{ transform: `translate3d(${lens.x}px, ${lens.y}px, 0)` }}
-        aria-hidden="true"
-      >
-        {lens.text}
+      <div ref={lensRef} className="magnifier-lens" aria-hidden="true">
+        <div ref={lensContentRef} className="magnifier-lens-content" />
       </div>
     </MagnifierContext.Provider>
   )

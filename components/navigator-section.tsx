@@ -11,9 +11,8 @@ export function NavigatorSection() {
 
   return (
     <section
-      aria-labelledby="navigator-heading"
-      className="anchor-target relative px-6 py-24 md:py-32 lg:px-8"
-      id="navigator"
+      aria-labelledby="navigator"
+      className="relative px-6 py-24 md:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-8 top-16 h-48 w-48 rounded-full bg-primary/8 blur-[100px]" />
@@ -46,8 +45,8 @@ export function NavigatorSection() {
               />
             </div>
             <h2
-              id="navigator-heading"
-              className="reveal mt-6 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+              id="navigator"
+              className="anchor-target-tight reveal mt-6 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl"
               data-reveal
             >
               {copy.title}
@@ -64,7 +63,7 @@ export function NavigatorSection() {
           {/* Right: CTA button */}
           <a
             href={LINKS.knowledgeBase}
-            className="reveal hover-lift press-pop inline-flex min-h-[56px] shrink-0 items-center gap-3 rounded-2xl border-2 border-accent/60 bg-accent/10 px-8 py-4 text-base font-semibold text-accent transition-all hover:bg-accent/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:text-lg"
+            className="interactive-ease reveal hover-lift press-pop inline-flex min-h-[56px] shrink-0 items-center gap-3 rounded-2xl border-2 border-accent/60 bg-accent/10 px-8 py-4 text-base font-semibold text-accent transition-all hover:bg-accent/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:text-lg"
             aria-label={copy.ctaAria}
             style={{ transitionDelay: "240ms" }}
             data-reveal

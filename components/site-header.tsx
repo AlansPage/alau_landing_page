@@ -11,23 +11,43 @@ import { useMagnifier } from "@/components/magnifier-provider"
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null)
+  const magnifierButtonRef = useRef<HTMLButtonElement | null>(null)
   const { lang, setLang } = useLanguage()
-  const { enabled: magnifierEnabled, toggle: toggleMagnifier } = useMagnifier()
+  const {
+    enabled: magnifierEnabled,
+    toggle: toggleMagnifier,
+    setToggleButtonEl,
+  } = useMagnifier()
   const copy = getI18n(lang)
 
   useEffect(() => {
     const header = headerRef.current
     if (!header) return
+
     const updateHeaderHeight = () => {
+      const height = header.getBoundingClientRect().height
       document.documentElement.style.setProperty(
         "--header-h",
-        `${header.offsetHeight}px`
+        `${height}px`
       )
     }
+
     updateHeaderHeight()
-    window.addEventListener("resize", updateHeaderHeight)
-    return () => window.removeEventListener("resize", updateHeaderHeight)
+
+    const observer = new ResizeObserver(() => {
+      updateHeaderHeight()
+    })
+    observer.observe(header)
+
+    return () => {
+      observer.disconnect()
+    }
   }, [])
+
+  useEffect(() => {
+    setToggleButtonEl(magnifierButtonRef.current)
+    return () => setToggleButtonEl(null)
+  }, [setToggleButtonEl])
 
   return (
     <header
@@ -51,7 +71,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => setLang("ru")}
-                className={`min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "ru" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`interactive-ease min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "ru" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
                 aria-pressed={lang === "ru"}
               >
                 {"RU"}
@@ -59,17 +79,19 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => setLang("kk")}
-                className={`min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "kk" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`interactive-ease min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "kk" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
                 aria-pressed={lang === "kk"}
               >
-                {"KK"}
+                {"KZ"}
               </button>
             </div>
             <button
+              ref={magnifierButtonRef}
               type="button"
               onClick={toggleMagnifier}
-              className={`flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${magnifierEnabled ? "text-primary" : ""}`}
-              aria-label="Magnifier"
+              className={`interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${magnifierEnabled ? "text-primary" : ""}`}
+              aria-label="Toggle magnifier"
+              aria-pressed={magnifierEnabled}
             >
               <ZoomIn className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -77,19 +99,19 @@ export function SiteHeader() {
         </div>
 
         <nav aria-label="Разделы" className="flex flex-wrap items-center gap-4 text-sm">
-          <a href="#hero" className="text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#hero" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.home}
           </a>
-          <a href="#audience" className="text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#audience" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.audience}
           </a>
-          <a href="#how-it-works" className="text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#how-it-works" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.howItWorks}
           </a>
-          <a href="#navigator" className="text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#navigator" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.navigator}
           </a>
-          <a href="#contacts" className="text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#contacts" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.contacts}
           </a>
         </nav>

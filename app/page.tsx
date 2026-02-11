@@ -9,6 +9,8 @@ import { RevealInitializer } from "@/components/reveal-initializer"
 export default function Page() {
   return (
     <>
+      <span id="hero" aria-hidden="true" />
+
       {/* Skip to content link */}
       <a href="#main-content" className="skip-to-content">
         {"Перейти к содержимому"}

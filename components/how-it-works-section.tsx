@@ -23,17 +23,16 @@ export function HowItWorksSection() {
 
   return (
     <section
-      aria-labelledby="how-it-works-heading"
-      className="anchor-target relative px-6 py-24 md:py-32 lg:px-8"
-      id="how-it-works"
+      aria-labelledby="how-it-works"
+      className="relative px-6 py-24 md:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute right-10 top-16 h-56 w-56 rounded-full bg-accent/10 blur-[110px]" />
       </div>
       <div className="mx-auto max-w-6xl">
         <h2
-          id="how-it-works-heading"
-          className="reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+          id="how-it-works"
+          className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
           data-reveal
         >
           {copy.title}
