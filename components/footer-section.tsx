@@ -31,7 +31,7 @@ export function FooterSection() {
 
           {/* Partners */}
           <div className="flex flex-col gap-4" aria-label={copy.partnersTitle}>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
               {copy.partnersTitle}
             </h3>
             <div className="rounded-[1.75rem] border border-border/40 bg-card p-4 shadow-lg shadow-background/40 sm:p-6">
@@ -56,7 +56,7 @@ export function FooterSection() {
 
           {/* Contacts / social links */}
           <div className="flex flex-col gap-4">
-            <h3 id="contacts" className="anchor-target text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <h3 id="contacts" className="anchor-target text-sm font-semibold uppercase tracking-widest text-muted-foreground">
               {copy.contactsTitle}
             </h3>
             <address className="text-sm not-italic leading-relaxed text-muted-foreground">

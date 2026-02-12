@@ -77,10 +77,10 @@ export function AudienceSection() {
                     aria-hidden="true"
                   />
                 </div>
-                <h3 className="relative mt-6 text-xl font-bold text-foreground">
+                <h3 className="relative mt-6 text-xl font-semibold text-foreground">
                   {card.title}
                 </h3>
-                <p className="relative mt-3 text-base leading-relaxed text-muted-foreground">
+                <p className="relative mt-3 text-base leading-relaxed text-muted-foreground md:text-lg">
                   {card.description}
                 </p>
               </article>

@@ -46,13 +46,13 @@ export function NavigatorSection() {
             </div>
             <h2
               id="navigator"
-              className="anchor-target-tight reveal mt-6 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+              className="anchor-target-tight reveal mt-6 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
               data-reveal
             >
               {copy.title}
             </h2>
             <p
-              className="reveal mt-4 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground"
+              className="reveal mt-4 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"
               style={{ transitionDelay: "120ms" }}
               data-reveal
             >

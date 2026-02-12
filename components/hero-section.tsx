@@ -85,7 +85,7 @@ export function HeroSection() {
             {copy.titleSuffix}
           </h1>
           <p
-            className="subhead hero-subhead reveal mt-8 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="subhead hero-subhead reveal mt-8 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"
             style={{ transitionDelay: "120ms" }}
             data-reveal
           >
