@@ -1,7 +1,10 @@
 import { HeroSection } from "@/components/hero-section"
 import { AudienceSection } from "@/components/audience-section"
 import { HowItWorksSection } from "@/components/how-it-works-section"
-import { NavigatorSection } from "@/components/navigator-section"
+import { FeaturesSection } from "@/components/features-section"
+import { SocialProofSection } from "@/components/social-proof-section"
+import { ContactSection } from "@/components/contact-section"
+import { FaqSection } from "@/components/faq-section"
 import { FooterSection } from "@/components/footer-section"
 import { SiteHeader } from "@/components/site-header"
 import { RevealInitializer } from "@/components/reveal-initializer"
@@ -23,7 +26,10 @@ export default function Page() {
         <HeroSection />
         <AudienceSection />
         <HowItWorksSection />
-        <NavigatorSection />
+        <FeaturesSection />
+        <SocialProofSection />
+        <ContactSection />
+        <FaqSection />
       </main>
 
       <FooterSection />

@@ -45,6 +45,12 @@ const config: Config = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        flame: {
+          deep: 'hsl(var(--flame-deep))',
+          core: 'hsl(var(--flame-core))',
+          hot: 'hsl(var(--flame-hot))',
+          glow: 'hsl(var(--flame-glow))',
+        },
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

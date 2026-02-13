@@ -1,13 +1,16 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { ZoomIn } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { ZoomIn, Menu, X } from "lucide-react"
 
 import { Logo } from "@/components/logo"
 import { getI18n } from "@/lib/i18n"
 import { SITE } from "@/lib/site-config"
 import { useLanguage } from "@/components/language-provider"
 import { useMagnifier } from "@/components/magnifier-provider"
+
+const NAV_LINK_CLASS =
+  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null)
@@ -19,6 +22,7 @@ export function SiteHeader() {
     setToggleButtonEl,
   } = useMagnifier()
   const copy = getI18n(lang)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const header = headerRef.current
@@ -49,13 +53,26 @@ export function SiteHeader() {
     return () => setToggleButtonEl(null)
   }, [setToggleButtonEl])
 
+  // Close menu when a nav link is clicked
+  const handleNavClick = () => setMenuOpen(false)
+
+  const navLinks = [
+    { href: "#hero", label: copy.header.home },
+    { href: "#audience", label: copy.header.audience },
+    { href: "#how-it-works", label: copy.header.howItWorks },
+    { href: "#features", label: copy.header.features },
+    { href: "#testimonials", label: copy.header.testimonials },
+    { href: "#contact", label: copy.header.contact },
+    { href: "#faq", label: copy.header.faq },
+  ]
+
   return (
     <header
-      className="sticky top-0 z-40 border-b border-border/30 bg-background/80 backdrop-blur"
+      className="sticky top-1 z-40 border-b border-border/30 bg-background/80 backdrop-blur"
       aria-label="Верхняя панель"
       ref={headerRef}
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-5 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           <a
             href="#main-content"
@@ -97,25 +114,41 @@ export function SiteHeader() {
             >
               <ZoomIn className="h-5 w-5" aria-hidden="true" />
             </button>
+
+            {/* Hamburger toggle — visible only on small screens */}
+            <button
+              type="button"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              className="interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:hidden"
+              aria-label={menuOpen ? copy.header.menuClose : copy.header.menuOpen}
+              aria-expanded={menuOpen}
+              aria-controls="main-nav"
+            >
+              {menuOpen ? (
+                <X className="h-5 w-5" aria-hidden="true" />
+              ) : (
+                <Menu className="h-5 w-5" aria-hidden="true" />
+              )}
+            </button>
           </div>
         </div>
 
-        <nav aria-label="Разделы" className="flex flex-wrap items-center gap-1 text-sm">
-          <a href="#hero" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-            {copy.header.home}
-          </a>
-          <a href="#audience" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-            {copy.header.audience}
-          </a>
-          <a href="#how-it-works" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-            {copy.header.howItWorks}
-          </a>
-          <a href="#navigator" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-            {copy.header.navigator}
-          </a>
-          <a href="#contacts" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-            {copy.header.contacts}
-          </a>
+        {/* Desktop nav — always visible */}
+        <nav
+          id="main-nav"
+          aria-label="Разделы"
+          className={`flex-wrap items-center gap-1 text-sm md:flex ${menuOpen ? "flex" : "hidden"}`}
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={NAV_LINK_CLASS}
+              onClick={handleNavClick}
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
       </div>
     </header>
