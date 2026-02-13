@@ -77,7 +77,7 @@ export function HowItWorksSection() {
                       aria-hidden="true"
                     />
                   </div>
-                  <p className="mt-4 text-base font-semibold leading-relaxed text-foreground lg:text-lg">
+                  <p className="mt-4 text-pretty text-base font-semibold leading-relaxed text-foreground lg:text-lg">
                     {step.text}
                   </p>
                 </div>
@@ -112,7 +112,7 @@ export function HowItWorksSection() {
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="text-lg font-semibold text-foreground">
+                    <p className="text-pretty text-lg font-semibold leading-relaxed text-foreground">
                       {step.text}
                     </p>
                   </div>

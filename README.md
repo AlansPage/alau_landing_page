@@ -46,7 +46,3 @@ Implementation:
 1. Push this repo to GitHub.
 2. Import it into Vercel.
 3. Build command: `npm run build` (default)
-
-## Prompts for OpenAI Codex
-
-See: `PROMPTS_FOR_CODEX.md`

@@ -80,7 +80,7 @@ export function AudienceSection() {
                 <h3 className="relative mt-6 text-xl font-semibold text-foreground">
                   {card.title}
                 </h3>
-                <p className="relative mt-3 text-base leading-relaxed text-muted-foreground md:text-lg">
+                <p className="relative mt-3 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
                   {card.description}
                 </p>
               </article>

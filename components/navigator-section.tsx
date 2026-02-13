@@ -38,9 +38,9 @@ export function NavigatorSection() {
           </div>
           {/* Left: text content */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent">
               <MapPin
-                className="h-7 w-7 text-accent"
+                className="h-7 w-7 text-accent-foreground"
                 aria-hidden="true"
               />
             </div>
@@ -63,7 +63,7 @@ export function NavigatorSection() {
           {/* Right: CTA button */}
           <a
             href={LINKS.knowledgeBase}
-            className="interactive-ease reveal hover-lift press-pop inline-flex min-h-[56px] shrink-0 items-center gap-3 rounded-2xl border-2 border-accent/60 bg-accent/10 px-8 py-4 text-base font-semibold text-accent transition-all hover:bg-accent/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:text-lg"
+            className="interactive-ease reveal hover-lift press-pop inline-flex min-h-[56px] shrink-0 items-center gap-3 rounded-2xl bg-accent px-8 py-4 text-base font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-all hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:text-lg"
             aria-label={copy.ctaAria}
             style={{ transitionDelay: "240ms" }}
             data-reveal

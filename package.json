@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build --webpack",
-    "start": "next start",
-    "lint": "node scripts/run-lint.cjs"
+    "start": "next start"
   },
   "dependencies": {
     "clsx": "^2.1.1",

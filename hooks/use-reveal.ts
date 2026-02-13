@@ -3,15 +3,18 @@ import { useEffect } from "react"
 export function useReveal(elementsSelector: string) {
   useEffect(() => {
     if (typeof window === "undefined") return
-    document.documentElement.setAttribute("data-reveal-ready", "true")
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
     if (media.matches) {
+      // Skip data-reveal-ready entirely so .reveal elements stay at their
+      // default opacity:1 / transform:none — no flash, no transition delay.
       document.querySelectorAll(elementsSelector).forEach((el) => {
         el.classList.add("is-visible")
       })
       return
     }
+
+    document.documentElement.setAttribute("data-reveal-ready", "true")
 
     const observer = new IntersectionObserver(
       (entries) => {

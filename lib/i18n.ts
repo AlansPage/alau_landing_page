@@ -8,6 +8,9 @@ type I18nDict = {
     navigator: string
     contacts: string
     magnifierHint: string
+    magnifierLabel: string
+    langRu: string
+    langKk: string
   }
   hero: {
     titlePrefix: string
@@ -75,6 +78,9 @@ export const I18N: Record<Language, I18nDict> = {
       navigator: "Навигатор",
       contacts: "Контакты",
       magnifierHint: "Наведи на текст, чтобы увеличить",
+      magnifierLabel: "Включить лупу",
+      langRu: "Русский язык",
+      langKk: "Казахский язык",
     },
     hero: {
       titlePrefix: "ALAU: Твой ",
@@ -181,6 +187,9 @@ export const I18N: Record<Language, I18nDict> = {
       navigator: "Навигатор",
       contacts: "Байланыс",
       magnifierHint: "Мәтінге апарсаңыз, үлкейеді",
+      magnifierLabel: "Лупаны қосу",
+      langRu: "Орыс тілі",
+      langKk: "Қазақ тілі",
     },
     hero: {
       // TODO: verify kk translations with native speaker.

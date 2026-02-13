@@ -71,16 +71,18 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => setLang("ru")}
-                className={`interactive-ease min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "ru" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`interactive-ease min-h-[44px] min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "ru" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
                 aria-pressed={lang === "ru"}
+                aria-label={copy.header.langRu}
               >
                 {"RU"}
               </button>
               <button
                 type="button"
                 onClick={() => setLang("kk")}
-                className={`interactive-ease min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "kk" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                className={`interactive-ease min-h-[44px] min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "kk" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
                 aria-pressed={lang === "kk"}
+                aria-label={copy.header.langKk}
               >
                 {"KZ"}
               </button>
@@ -90,7 +92,7 @@ export function SiteHeader() {
               type="button"
               onClick={toggleMagnifier}
               className={`interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${magnifierEnabled ? "text-primary" : ""}`}
-              aria-label="Toggle magnifier"
+              aria-label={copy.header.magnifierLabel}
               aria-pressed={magnifierEnabled}
             >
               <ZoomIn className="h-5 w-5" aria-hidden="true" />
@@ -98,20 +100,20 @@ export function SiteHeader() {
           </div>
         </div>
 
-        <nav aria-label="Разделы" className="flex flex-wrap items-center gap-4 text-sm">
-          <a href="#hero" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+        <nav aria-label="Разделы" className="flex flex-wrap items-center gap-1 text-sm">
+          <a href="#hero" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.home}
           </a>
-          <a href="#audience" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#audience" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.audience}
           </a>
-          <a href="#how-it-works" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#how-it-works" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.howItWorks}
           </a>
-          <a href="#navigator" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#navigator" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.navigator}
           </a>
-          <a href="#contacts" className="interactive-ease text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <a href="#contacts" className="interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
             {copy.header.contacts}
           </a>
         </nav>
