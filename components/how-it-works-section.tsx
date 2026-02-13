@@ -40,7 +40,7 @@ export function HowItWorksSection() {
 
         {/* Soft surface panel for steps (adds detail without adding sections) */}
         <div
-          className="reveal mt-14 rounded-[2.5rem] border border-border/40 bg-surface/70 p-6 shadow-xl shadow-background/50 sm:p-8 lg:p-10"
+          className="reveal mt-14 rounded-[2.5rem] border border-border/40 bg-surface/70 p-6 shadow-xl shadow-background/50 backdrop-blur-sm sm:p-8 lg:p-10"
           style={{ transitionDelay: "120ms" }}
           data-reveal
         >
@@ -50,7 +50,7 @@ export function HowItWorksSection() {
           <ol className="relative grid grid-cols-4 gap-10">
             {/* Connecting line behind step badges */}
             <div
-              className="pointer-events-none absolute left-[calc(12.5%+28px)] right-[calc(12.5%+28px)] top-[28px] h-px bg-border"
+              className="pointer-events-none absolute left-[calc(12.5%+32px)] right-[calc(12.5%+32px)] top-[32px] h-0.5 bg-primary/20"
               aria-hidden="true"
             />
             {steps.map((step, index) => (
@@ -59,8 +59,8 @@ export function HowItWorksSection() {
                 className="relative flex flex-col items-center text-center"
               >
                 {/* Big rounded badge */}
-                <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/40 bg-card shadow-lg shadow-primary/10">
-                  <span className="text-lg font-extrabold text-primary">
+                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/40 bg-card shadow-lg shadow-primary/10">
+                  <span className="text-xl font-extrabold text-primary">
                     {step.number}
                   </span>
                 </div>

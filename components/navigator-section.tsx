@@ -29,11 +29,11 @@ export function NavigatorSection() {
                 </linearGradient>
               </defs>
               <rect width="520" height="320" fill="url(#navg)" />
-              <path d="M40 240 C 160 120, 260 340, 380 180 S 520 120, 560 40" fill="none" stroke="hsl(200 100% 44% / 0.22)" strokeWidth="10" strokeLinecap="round" />
-              <path d="M30 190 C 170 80, 270 260, 410 120 S 520 70, 560 10" fill="none" stroke="hsl(212 100% 47% / 0.22)" strokeWidth="6" strokeLinecap="round" />
-              <circle cx="180" cy="150" r="10" fill="hsl(212 100% 47% / 0.55)" />
-              <circle cx="320" cy="170" r="8" fill="hsl(200 100% 44% / 0.45)" />
-              <circle cx="410" cy="120" r="7" fill="hsl(212 100% 47% / 0.35)" />
+              <path d="M40 240 C 160 120, 260 340, 380 180 S 520 120, 560 40" fill="none" stroke="hsl(200 100% 44% / 0.35)" strokeWidth="10" strokeLinecap="round" />
+              <path d="M30 190 C 170 80, 270 260, 410 120 S 520 70, 560 10" fill="none" stroke="hsl(212 100% 47% / 0.35)" strokeWidth="6" strokeLinecap="round" />
+              <circle cx="180" cy="150" r="15" fill="hsl(212 100% 47% / 0.55)" />
+              <circle cx="320" cy="170" r="12" fill="hsl(200 100% 44% / 0.45)" />
+              <circle cx="410" cy="120" r="10" fill="hsl(212 100% 47% / 0.35)" />
             </svg>
           </div>
           {/* Left: text content */}

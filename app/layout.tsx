@@ -15,6 +15,20 @@ export const metadata: Metadata = {
   title: 'ALAU — Твой потенциал ярче, чем ты думаешь',
   description:
     'Платформа для обучения и работы, где тебя понимают. Доступно для людей с инвалидностью.',
+  openGraph: {
+    title: 'ALAU — Твой потенциал ярче, чем ты думаешь',
+    description:
+      'Платформа для обучения и работы, где тебя понимают. Доступно для людей с инвалидностью.',
+    type: 'website',
+    locale: 'ru_RU',
+    siteName: 'ALAU',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ALAU — Твой потенциал ярче, чем ты думаешь',
+    description:
+      'Платформа для обучения и работы, где тебя понимают. Доступно для людей с инвалидностью.',
+  },
 }
 
 export const viewport: Viewport = {

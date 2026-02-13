@@ -13,8 +13,8 @@ function HeroCollage({ copy }: { copy: ReturnType<typeof getI18n>["hero"] }) {
       aria-hidden="true"
       role="presentation"
     >
-      <div className="relative h-[420px] w-[360px] lg:h-[500px] lg:w-[430px]">
-        <div className="hero-glow hero-tile-c absolute left-8 top-12 h-[320px] w-[300px] rounded-[2.2rem] border border-border/45 bg-card/95 shadow-[0_28px_70px_hsl(var(--foreground)/0.1)] lg:left-12 lg:top-16 lg:h-[360px] lg:w-[320px]">
+      <div className="relative h-[460px] w-[390px] lg:h-[540px] lg:w-[460px]">
+        <div className="hero-glow hero-tile-c absolute left-8 top-12 h-[340px] w-[310px] rounded-[2.2rem] border border-border/45 bg-card/95 shadow-[0_28px_70px_hsl(var(--foreground)/0.1)] lg:left-12 lg:top-16 lg:h-[380px] lg:w-[340px]">
           <div className="absolute inset-0 rounded-[2.2rem] bg-[linear-gradient(140deg,hsl(212_100%_47%/.12),transparent_45%,hsl(200_100%_44%/.08))]" />
           <div className="absolute left-6 right-6 top-6 h-10 rounded-2xl border border-border/35 bg-background/90" />
           <div className="absolute left-6 right-6 top-20 rounded-3xl border border-primary/20 bg-primary/10 p-5">
@@ -25,32 +25,32 @@ function HeroCollage({ copy }: { copy: ReturnType<typeof getI18n>["hero"] }) {
               <div className="h-16 rounded-2xl border border-border/40 bg-background/85" />
             </div>
           </div>
-          <div className="absolute left-6 right-6 top-[17.1rem] h-1.5 rounded-full bg-accent/45 lg:top-[18.8rem]" />
+          <div className="absolute left-6 right-6 top-[18rem] h-1.5 rounded-full bg-accent/45 lg:top-[19.8rem]" />
         </div>
 
-        <div className="hero-glow hero-tile-a hero-tile-hover absolute left-0 top-14 flex h-20 w-40 items-center gap-3 rounded-2xl border border-primary/25 bg-card/95 px-4 shadow-lg shadow-background/40">
-          <Sparkles className="h-4 w-4 shrink-0 text-primary" />
-          <span className="text-xs font-semibold leading-tight text-foreground">
+        <div className="hero-glow hero-tile-a hero-tile-hover absolute -left-2 top-10 flex h-[5.5rem] w-44 items-center gap-3 rounded-2xl border border-primary/25 bg-card/95 px-5 shadow-lg shadow-background/40">
+          <Sparkles className="h-5 w-5 shrink-0 text-primary" />
+          <span className="text-sm font-semibold leading-tight text-foreground">
             {copy.collage.accessibleTitle}
           </span>
         </div>
 
-        <div className="hero-glow hero-tile-b hero-tile-hover absolute right-1 top-12 flex h-20 w-40 items-center gap-3 rounded-2xl border border-accent/25 bg-card/95 px-4 shadow-lg shadow-background/40 lg:top-14">
-          <Accessibility className="h-4 w-4 shrink-0 text-accent" />
-          <span className="text-xs font-semibold leading-tight text-foreground">
+        <div className="hero-glow hero-tile-b hero-tile-hover absolute -right-2 top-8 flex h-[5.5rem] w-44 items-center gap-3 rounded-2xl border border-accent/25 bg-card/95 px-5 shadow-lg shadow-background/40 lg:top-10">
+          <Accessibility className="h-5 w-5 shrink-0 text-accent" />
+          <span className="text-sm font-semibold leading-tight text-foreground">
             {copy.collage.calmTitle}
           </span>
         </div>
 
-        <div className="hero-glow hero-tile-b hero-tile-hover absolute left-2 top-[17.8rem] flex h-20 w-44 items-center gap-3 rounded-2xl border border-border/40 bg-card/95 px-4 shadow-lg shadow-background/35 lg:top-[20.1rem]">
-          <PanelsTopLeft className="h-4 w-4 shrink-0 text-primary" />
-          <span className="text-xs font-semibold leading-tight text-foreground">
+        <div className="hero-glow hero-tile-b hero-tile-hover absolute -left-1 top-[19.5rem] flex h-[5.5rem] w-48 items-center gap-3 rounded-2xl border border-border/40 bg-card/95 px-5 shadow-lg shadow-background/35 lg:top-[22rem]">
+          <PanelsTopLeft className="h-5 w-5 shrink-0 text-primary" />
+          <span className="text-sm font-semibold leading-tight text-foreground">
             {copy.collage.accessibleSubtitle}
           </span>
         </div>
 
-        <div className="hero-glow hero-tile-a hero-tile-hover absolute right-3 top-[18.4rem] flex h-24 w-24 items-center justify-center rounded-3xl border border-border/40 bg-card/95 shadow-lg shadow-background/35 lg:top-[21rem]">
-          <Flame className="h-9 w-9 text-primary" />
+        <div className="hero-glow hero-tile-a hero-tile-hover absolute right-0 top-[20rem] flex h-[6.5rem] w-[6.5rem] items-center justify-center rounded-3xl border border-border/40 bg-card/95 shadow-lg shadow-background/35 lg:top-[23rem]">
+          <Flame className="h-10 w-10 text-primary" />
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@ export function HeroSection() {
     >
       {/* Background glow layers */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -top-40 left-1/2 h-[700px] w-[900px] -translate-x-1/2 rounded-full bg-primary/8 blur-[120px]" />
+        <div className="absolute -top-40 left-1/2 h-[700px] w-[900px] -translate-x-1/2 rounded-full bg-primary/12 blur-[140px]" />
         <div className="absolute -bottom-32 right-0 h-[400px] w-[600px] rounded-full bg-accent/5 blur-[100px]" />
       </div>
 
@@ -96,7 +96,7 @@ export function HeroSection() {
             href={LINKS.telegramBot}
             target="_blank"
             rel="noopener noreferrer"
-            className="interactive-ease reveal hover-lift press-pop group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_60px_hsl(212_100%_55%/0.35)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
+            className="interactive-ease reveal hover-lift press-pop cta-shimmer group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
             aria-label={copy.ctaAria}
             style={{ transitionDelay: "260ms" }}
             data-reveal

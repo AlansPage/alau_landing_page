@@ -34,7 +34,7 @@ export function AudienceSection() {
 
         {/* Soft surface panel behind cards (airy / EPAM-like rhythm) */}
         <div
-          className="reveal mt-14 rounded-[2.5rem] border border-border/40 bg-surface/70 p-6 shadow-xl shadow-background/50 sm:p-8 lg:p-10"
+          className="reveal mt-14 rounded-[2.5rem] border border-border/40 bg-surface/70 p-6 shadow-xl shadow-background/50 backdrop-blur-sm sm:p-8 lg:p-10"
           style={{ transitionDelay: "120ms" }}
           data-reveal
         >
@@ -49,7 +49,7 @@ export function AudienceSection() {
               >
                 {/* Decorative background pattern */}
                 <div
-                  className="pointer-events-none absolute inset-0 opacity-[0.22]"
+                  className="pointer-events-none absolute inset-0 opacity-[0.30]"
                   aria-hidden="true"
                 >
                   <svg viewBox="0 0 220 220" className="h-full w-full">
@@ -71,9 +71,9 @@ export function AudienceSection() {
                 </div>
 
                 {/* Icon in rounded square container */}
-                <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
                   <card.icon
-                    className="h-7 w-7 text-primary"
+                    className="h-8 w-8 text-primary"
                     aria-hidden="true"
                   />
                 </div>

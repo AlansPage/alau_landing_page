@@ -212,6 +212,15 @@
   }
 }
 
+@keyframes cta-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
 @keyframes float {
   0%,
   100% {
@@ -280,8 +289,10 @@
     transform: none !important;
   }
 
-  .interactive-ease {
+  .interactive-ease,
+  .cta-shimmer {
     transition: none !important;
+    animation: none !important;
   }
 
   .magnifier-hint {
@@ -308,5 +319,19 @@
   .hero-tile-hover:hover {
     transform: translateY(-2px);
     box-shadow: 0 16px 34px hsl(var(--foreground) / 0.12);
+  }
+
+  .cta-shimmer {
+    background-image: linear-gradient(
+      110deg,
+      transparent 25%,
+      hsl(0 0% 100% / 0.18) 37%,
+      hsl(0 0% 100% / 0.22) 50%,
+      hsl(0 0% 100% / 0.18) 63%,
+      transparent 75%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: cta-shimmer 4s ease-in-out infinite;
   }
 }
