@@ -96,6 +96,8 @@ type I18nDict = {
       instagram: string
       youtube: string
     }
+    emailLabel: string
+    accessibilityMap: string
     copyright: string
     partners: Array<{
       src: string
@@ -276,7 +278,7 @@ export const I18N: Record<Language, I18nDict> = {
     },
     footer: {
       description: "Платформа для обучения и работы, где тебя понимают.",
-      partnersTitle: "Партнёры",
+      partnersTitle: "Нас спонсируют",
       contactsTitle: "Контакты",
       socialLabel: "Социальные сети",
       socialItems: {
@@ -284,6 +286,8 @@ export const I18N: Record<Language, I18nDict> = {
         instagram: "Instagram",
         youtube: "YouTube",
       },
+      emailLabel: "Написать нам",
+      accessibilityMap: "Карта доступности",
       copyright: "© 2026 ALAU. Все права защищены.",
       partners: [
         {
@@ -293,10 +297,6 @@ export const I18N: Record<Language, I18nDict> = {
         {
           src: "/partners/iteachme.png",
           alt: "ITeachMe",
-        },
-        {
-          src: "/partners/ministry-edu-kz.png",
-          alt: "Министерство образования Республики Казахстан",
         },
       ],
     },
@@ -474,7 +474,7 @@ export const I18N: Record<Language, I18nDict> = {
     },
     footer: {
       description: "Түсінетін ортада оқу мен жұмыс платформасы.",
-      partnersTitle: "Серіктестер",
+      partnersTitle: "Бізді демеушілер",
       contactsTitle: "Байланыс",
       socialLabel: "Әлеуметтік желілер",
       socialItems: {
@@ -482,6 +482,8 @@ export const I18N: Record<Language, I18nDict> = {
         instagram: "Instagram",
         youtube: "YouTube",
       },
+      emailLabel: "Бізге жазыңыз",
+      accessibilityMap: "Қолжетімділік картасы",
       copyright: "© 2026 ALAU. Барлық құқықтар қорғалған.",
       partners: [
         {
@@ -491,10 +493,6 @@ export const I18N: Record<Language, I18nDict> = {
         {
           src: "/partners/iteachme.png",
           alt: "ITeachMe",
-        },
-        {
-          src: "/partners/ministry-edu-kz.png",
-          alt: "Қазақстан Республикасының Білім министрлігі",
         },
       ],
     },

@@ -8,6 +8,7 @@ import {
 } from "lucide-react"
 
 import { getI18n } from "@/lib/i18n"
+import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { useLanguage } from "@/components/language-provider"
 
 const stepIcons = [MessageCircle, ClipboardList, MonitorPlay, Briefcase] as const
@@ -30,17 +31,24 @@ export function HowItWorksSection() {
         <div className="absolute right-10 top-16 h-56 w-56 rounded-full bg-accent/10 blur-[110px]" />
       </div>
       <div className="mx-auto max-w-6xl">
-        <h2
-          id="how-it-works"
-          className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
-          data-reveal
-        >
-          {copy.title}
-        </h2>
+        <div className="relative inline-block">
+          <h2
+            id="how-it-works"
+            className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            data-reveal
+          >
+            {copy.title}
+          </h2>
+          <SparkleStar
+            points={4} size={22} color="hsl(35 90% 60%)"
+            className="sparkle-pulse absolute -top-3 -right-6 opacity-[0.25] md:-right-8"
+            style={{ animationDuration: "4.8s", animationDelay: "-2.5s", "--sparkle-base-opacity": "0.25" } as React.CSSProperties}
+          />
+        </div>
 
         {/* Soft surface panel for steps (adds detail without adding sections) */}
         <div
-          className="reveal mt-14 rounded-[2.5rem] border border-border/40 bg-surface/70 p-6 shadow-xl shadow-background/50 backdrop-blur-sm sm:p-8 lg:p-10"
+          className="reveal mt-14 rounded-[2.5rem] border border-border/30 bg-surface/70 p-6 shadow-xl shadow-background/50 shadow-[inset_0_1px_0_hsl(var(--flame-glow))] backdrop-blur-sm sm:p-8 lg:p-10"
           style={{ transitionDelay: "120ms" }}
           data-reveal
         >
@@ -67,11 +75,11 @@ export function HowItWorksSection() {
 
                 {/* Step card */}
                 <div
-                  className="reveal hover-lift mt-5 w-full rounded-3xl border border-border/50 bg-card px-6 pb-6 pt-7 shadow-sm shadow-background/30"
+                  className="reveal hover-lift mt-5 w-full rounded-3xl border border-border/50 bg-card px-6 pb-6 pt-7 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
                   style={{ transitionDelay: `${220 + index * 90}ms` }}
                   data-reveal
                 >
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/8">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
                     <step.icon
                       className="h-6 w-6 text-primary"
                       aria-hidden="true"
@@ -102,11 +110,11 @@ export function HowItWorksSection() {
                 </div>
                 <div className="pt-1">
                   <div
-                    className="reveal hover-lift rounded-3xl border border-border/50 bg-card px-6 py-5 shadow-sm shadow-background/30"
+                    className="reveal hover-lift rounded-3xl border border-border/50 bg-card px-6 py-5 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
                     style={{ transitionDelay: `${200 + index * 90}ms` }}
                     data-reveal
                   >
-                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/8">
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
                       <step.icon
                         className="h-5 w-5 text-primary"
                         aria-hidden="true"

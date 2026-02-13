@@ -26,56 +26,6 @@
     transform: translateY(0);
   }
 
-  .float-slow {
-    animation: float 9s ease-in-out infinite;
-  }
-
-  .hero-tile-a {
-    animation: hero-tile-a 7s ease-in-out infinite;
-    animation-delay: -0.8s;
-    will-change: transform;
-  }
-
-  .hero-tile-b {
-    animation: hero-tile-b 11s ease-in-out infinite;
-    animation-delay: -2.2s;
-    will-change: transform;
-  }
-
-  .hero-tile-c {
-    animation: hero-tile-c 14s ease-in-out infinite;
-    animation-delay: -4.2s;
-    will-change: transform;
-  }
-
-  .hero-glow {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-glow > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-glow::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: radial-gradient(
-      circle at 20% 20%,
-      hsl(var(--primary) / 0.12),
-      transparent 55%
-    );
-    opacity: 0.8;
-  }
-
-  .hero-tile-hover {
-    transition: transform 220ms ease-out, box-shadow 220ms ease-out;
-  }
-
   .hover-lift {
     transition: transform 220ms ease-out, box-shadow 220ms ease-out;
   }
@@ -234,12 +184,18 @@
     scroll-margin-top: calc(var(--header-h) + 8px);
   }
 
-  .anchor-target-tight {
-    scroll-margin-top: calc(var(--header-h) + 5px);
-  }
-
   .anchor-target-zero {
     scroll-margin-top: 0;
+  }
+}
+
+@keyframes hero-star-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.03);
   }
 }
 
@@ -252,44 +208,26 @@
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+@keyframes figure-sway {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(1.5deg) translateY(-2px); }
+  75% { transform: rotate(-1deg) translateY(1px); }
 }
 
-@keyframes hero-tile-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(6px, -11px, 0) rotate(0.8deg);
-  }
+@keyframes figure-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
-@keyframes hero-tile-b {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(-7px, -8px, 0) rotate(-1deg);
-  }
+@keyframes sparkle-pulse {
+  0%, 100% { opacity: var(--sparkle-base-opacity, 0.12); transform: scale(1); }
+  50% { opacity: calc(var(--sparkle-base-opacity, 0.12) + 0.04); transform: scale(1.15); }
 }
 
-@keyframes hero-tile-c {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(4px, -13px, 0) rotate(1.2deg);
-  }
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: var(--sparkle-base-opacity, 0.12); }
+  30% { opacity: calc(var(--sparkle-base-opacity, 0.12) + 0.06); }
+  60% { opacity: calc(var(--sparkle-base-opacity, 0.12) - 0.03); }
 }
 
 /* Respect prefers-reduced-motion */
@@ -303,25 +241,24 @@
     scroll-behavior: auto !important;
   }
 
-  .reveal,
-  .float-slow,
-  .hero-tile-a,
-  .hero-tile-b,
-  .hero-tile-c {
+  .reveal {
     animation: none !important;
     transform: none !important;
     opacity: 1 !important;
   }
 
   .hover-lift,
-  .hero-tile-hover,
   .press-pop {
     transition: none !important;
     transform: none !important;
   }
 
   .interactive-ease,
-  .cta-shimmer {
+  .cta-shimmer,
+  .hero-star-glow,
+  .figure-sway,
+  .sparkle-pulse,
+  .sparkle-twinkle {
     transition: none !important;
     animation: none !important;
   }
@@ -347,9 +284,8 @@
     scroll-behavior: smooth;
   }
 
-  .hero-tile-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 34px hsl(var(--foreground) / 0.12);
+  .hero-star-glow {
+    animation: hero-star-pulse 6s ease-in-out infinite;
   }
 
   .cta-shimmer {
@@ -364,5 +300,17 @@
     background-size: 200% 100%;
     background-repeat: no-repeat;
     animation: cta-shimmer 4s ease-in-out infinite;
+  }
+
+  .figure-sway {
+    animation: figure-sway 15s ease-in-out infinite;
+  }
+
+  .sparkle-pulse {
+    animation: sparkle-pulse 5s ease-in-out infinite;
+  }
+
+  .sparkle-twinkle {
+    animation: sparkle-twinkle 4s ease-in-out infinite;
   }
 }

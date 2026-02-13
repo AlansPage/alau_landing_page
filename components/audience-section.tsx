@@ -4,6 +4,8 @@ import { Eye, Ear, Hand, Brain } from "lucide-react"
 
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
+import { StarFigure } from "@/components/decorations/star-figure"
+import { SparkleStar } from "@/components/decorations/sparkle-star"
 
 const audienceIcons = [Eye, Ear, Hand, Brain] as const
 
@@ -22,19 +24,32 @@ export function AudienceSection() {
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/2 top-10 h-64 w-[420px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
+        {/* Dancing pair — bottom-left, between audience and how-it-works */}
+        <div className="absolute bottom-4 left-[4%] hidden opacity-[0.10] md:flex md:items-end md:gap-2">
+          <StarFigure pose="dancing" size={72} />
+          <StarFigure pose="dancing" size={68} style={{ transform: "scaleX(-1)" }} />
+        </div>
+        <SparkleStar points={6} size={20} color="hsl(280 60% 65%)" className="absolute bottom-24 left-[16%] hidden opacity-[0.15] md:block" />
       </div>
       <div className="mx-auto max-w-6xl">
-        <h2
-          id="audience"
-          className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
-          data-reveal
-        >
-          {copy.title}
-        </h2>
+        <div className="relative inline-block">
+          <h2
+            id="audience"
+            className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            data-reveal
+          >
+            {copy.title}
+          </h2>
+          <SparkleStar
+            points={6} size={24} color="hsl(280 60% 65%)"
+            className="sparkle-pulse absolute -top-3 -right-6 opacity-[0.25] md:-right-8"
+            style={{ animationDuration: "5.2s", animationDelay: "-1s", "--sparkle-base-opacity": "0.25" } as React.CSSProperties}
+          />
+        </div>
 
         {/* Soft surface panel behind cards (airy / EPAM-like rhythm) */}
         <div
-          className="reveal mt-14 rounded-[2.5rem] border border-border/40 bg-surface/70 p-6 shadow-xl shadow-background/50 backdrop-blur-sm sm:p-8 lg:p-10"
+          className="reveal mt-14 rounded-[2.5rem] border border-border/30 bg-surface/70 p-6 shadow-xl shadow-background/50 shadow-[inset_0_1px_0_hsl(var(--flame-glow))] backdrop-blur-sm sm:p-8 lg:p-10"
           style={{ transitionDelay: "120ms" }}
           data-reveal
         >
@@ -43,7 +58,7 @@ export function AudienceSection() {
               <article
                 key={card.title}
                 aria-label={card.ariaLabel}
-                className="reveal hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-colors hover:border-primary/30"
+                className="reveal hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
                 style={{ transitionDelay: `${220 + idx * 90}ms` }}
                 data-reveal
               >
@@ -71,7 +86,7 @@ export function AudienceSection() {
                 </div>
 
                 {/* Icon in rounded square container */}
-                <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
+                <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
                   <card.icon
                     className="h-8 w-8 text-primary"
                     aria-hidden="true"
