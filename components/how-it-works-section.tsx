@@ -87,9 +87,7 @@ export function HowItWorksSection() {
 
                 {/* Step card */}
                 <div
-                  className="reveal hover-lift mt-5 w-full rounded-3xl border border-border/50 bg-card px-6 pb-6 pt-7 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
-                  style={{ transitionDelay: `${220 + index * 90}ms` }}
-                  data-reveal
+                  className="hover-lift mt-5 w-full rounded-3xl border border-border/50 bg-card px-6 pb-6 pt-7 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
                 >
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
                     <step.icon
@@ -122,9 +120,7 @@ export function HowItWorksSection() {
                 </div>
                 <div className="pt-1">
                   <div
-                    className="reveal hover-lift rounded-3xl border border-border/50 bg-card px-6 py-5 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
-                    style={{ transitionDelay: `${200 + index * 90}ms` }}
-                    data-reveal
+                    className="hover-lift rounded-3xl border border-border/50 bg-card px-6 py-5 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
                   >
                     <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
                       <step.icon

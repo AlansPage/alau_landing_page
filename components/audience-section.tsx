@@ -69,9 +69,7 @@ export function AudienceSection() {
               <article
                 key={card.title}
                 aria-label={card.ariaLabel}
-                className="reveal hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
-                style={{ transitionDelay: `${220 + idx * 90}ms` }}
-                data-reveal
+                className="hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
               >
                 {/* Decorative background pattern */}
                 <div
