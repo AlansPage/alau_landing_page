@@ -7,6 +7,7 @@ import { ContactSection } from "@/components/contact-section"
 import { FaqSection } from "@/components/faq-section"
 import { FooterSection } from "@/components/footer-section"
 import { SiteHeader } from "@/components/site-header"
+import { FloatingControls } from "@/components/floating-controls"
 import { RevealInitializer } from "@/components/reveal-initializer"
 
 export default function Page() {
@@ -20,6 +21,7 @@ export default function Page() {
       </a>
 
       <SiteHeader />
+      <FloatingControls />
       <RevealInitializer />
 
       <main id="main-content">
