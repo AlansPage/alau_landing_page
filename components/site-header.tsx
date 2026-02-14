@@ -72,7 +72,7 @@ export function SiteHeader() {
       aria-label="Верхняя панель"
       ref={headerRef}
     >
-      <div className="relative mx-auto max-w-6xl px-6 py-5 pr-44 lg:px-8 lg:pr-48">
+      <div className="relative mx-auto max-w-6xl px-6 py-5 pr-36 lg:px-8 lg:pr-36">
         {/* Logo — top-left */}
         <a
           href="#main-content"
@@ -87,7 +87,7 @@ export function SiteHeader() {
         <nav
           id="main-nav"
           aria-label="Разделы"
-          className={`mt-3 flex-wrap items-center gap-1 md:flex ${menuOpen ? "flex" : "hidden"}`}
+          className={`mt-4 flex-wrap items-center gap-1 md:flex ${menuOpen ? "flex" : "hidden"}`}
         >
           {navLinks.map((link) => (
             <a
