@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react"
 
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
+import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
@@ -18,6 +19,13 @@ export function FaqSection() {
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-10 top-20 h-48 w-48 rounded-full bg-accent/6 blur-[110px]" />
+        {/* Holding figure — far-right, calm breathe */}
+        <div
+          className="figure-breathe absolute right-[3%] top-[30%] hidden opacity-[0.10] md:block"
+          style={{ animationDuration: "12s", animationDelay: "-5s" }}
+        >
+          <StarFigure pose="holding" size={70} />
+        </div>
         {/* Constellation cluster — right margin */}
         <SparkleStar points={6} size={22} color="hsl(280 60% 65%)" className="absolute right-[5%] top-[18%] hidden opacity-[0.14] md:block" />
         <SparkleStar points={4} size={16} color="hsl(35 90% 60%)" className="absolute right-[3%] top-[35%] hidden opacity-[0.12] md:block" />

@@ -257,6 +257,7 @@
   .cta-shimmer,
   .hero-star-glow,
   .figure-sway,
+  .figure-breathe,
   .sparkle-pulse,
   .sparkle-twinkle {
     transition: none !important;
@@ -304,6 +305,10 @@
 
   .figure-sway {
     animation: figure-sway 15s ease-in-out infinite;
+  }
+
+  .figure-breathe {
+    animation: figure-breathe 10s ease-in-out infinite;
   }
 
   .sparkle-pulse {

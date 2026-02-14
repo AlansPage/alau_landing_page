@@ -7,6 +7,7 @@ import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
 import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
+import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
 const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
 
@@ -163,12 +164,25 @@ export function FeaturesSection() {
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/4 top-20 h-72 w-72 rounded-full bg-primary/8 blur-[140px]" />
         <div className="absolute bottom-20 right-1/4 h-56 w-56 rounded-full bg-accent/6 blur-[120px]" />
-        {/* Holding figure — right margin, like holding a torch */}
-        <div className="absolute right-[3%] top-[30%] hidden opacity-[0.11] md:block">
-          <StarFigure pose="holding" size={80} />
+        {/* Reaching figure — right margin */}
+        <div
+          className="figure-sway absolute right-[2%] top-[28%] hidden opacity-[0.12] md:block"
+          style={{ animationDuration: "14s", animationDelay: "-5s" }}
+        >
+          <StarFigure pose="reaching" size={85} />
         </div>
-        <SparkleStar points={4} size={18} color="hsl(35 90% 60%)" className="absolute right-[2%] top-[28%] hidden opacity-[0.14] md:block" />
-        <SparkleStar points={6} size={14} color="hsl(35 90% 60%)" className="absolute right-[8%] top-[42%] hidden opacity-[0.12] md:block" />
+        <SparkleStar points={4} size={14} color="hsl(35 90% 60%)" className="sparkle-twinkle absolute right-[1%] top-[26%] hidden opacity-[0.14] md:block" style={{ animationDuration: "3.8s", animationDelay: "-1s" }} />
+        <MiniSparkle size={10} color="hsl(280 60% 65%)" className="sparkle-twinkle absolute right-[6%] top-[40%] hidden opacity-[0.12] md:block" style={{ animationDuration: "4.2s", animationDelay: "-2.4s" }} />
+
+        {/* Dancing figure — left side */}
+        <div
+          className="figure-sway absolute left-[2%] top-[55%] hidden opacity-[0.09] md:block"
+          style={{ animationDuration: "17s", animationDelay: "-9s" }}
+        >
+          <StarFigure pose="dancing" size={65} />
+        </div>
+        <SparkleStar points={6} size={12} color="hsl(340 70% 65%)" className="sparkle-twinkle absolute left-[1%] top-[53%] hidden opacity-[0.11] md:block" style={{ animationDuration: "4.6s", animationDelay: "-0.8s" }} />
+        <MiniSparkle size={8} color="hsl(35 90% 60%)" className="sparkle-twinkle absolute left-[5%] top-[65%] hidden opacity-[0.10] md:block" style={{ animationDuration: "3.4s", animationDelay: "-2s" }} />
       </div>
 
       <div className="mx-auto max-w-6xl">

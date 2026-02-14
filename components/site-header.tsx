@@ -10,7 +10,7 @@ import { useLanguage } from "@/components/language-provider"
 import { useMagnifier } from "@/components/magnifier-provider"
 
 const NAV_LINK_CLASS =
-  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-2 py-2 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null)
@@ -72,72 +72,22 @@ export function SiteHeader() {
       aria-label="Верхняя панель"
       ref={headerRef}
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-5 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
-          <a
-            href="#main-content"
-            className="flex items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-            aria-label="На главную"
-          >
+      <div className="relative mx-auto max-w-6xl px-6 py-5 pr-44 lg:px-8 lg:pr-48">
+        {/* Logo — top-left */}
+        <a
+          href="#main-content"
+          className="flex w-fit items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+          aria-label="На главную"
+        >
           <Logo variant="wordmark" className="h-8 w-auto" priority alt="ALAU" />
           <span className="sr-only">{SITE.name}</span>
-          </a>
+        </a>
 
-          <div className="flex items-center gap-2">
-            <div className="inline-flex items-center rounded-xl border border-border/40 bg-card p-1">
-              <button
-                type="button"
-                onClick={() => setLang("ru")}
-                className={`interactive-ease min-h-[44px] min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "ru" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
-                aria-pressed={lang === "ru"}
-                aria-label={copy.header.langRu}
-              >
-                {"RU"}
-              </button>
-              <button
-                type="button"
-                onClick={() => setLang("kk")}
-                className={`interactive-ease min-h-[44px] min-w-[44px] rounded-lg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "kk" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
-                aria-pressed={lang === "kk"}
-                aria-label={copy.header.langKk}
-              >
-                {"KZ"}
-              </button>
-            </div>
-            <button
-              ref={magnifierButtonRef}
-              type="button"
-              onClick={toggleMagnifier}
-              className={`interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${magnifierEnabled ? "text-primary" : ""}`}
-              aria-label={copy.header.magnifierLabel}
-              aria-pressed={magnifierEnabled}
-            >
-              <ZoomIn className="h-5 w-5" aria-hidden="true" />
-            </button>
-
-            {/* Hamburger toggle — visible only on small screens */}
-            <button
-              type="button"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              className="interactive-ease flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:hidden"
-              aria-label={menuOpen ? copy.header.menuClose : copy.header.menuOpen}
-              aria-expanded={menuOpen}
-              aria-controls="main-nav"
-            >
-              {menuOpen ? (
-                <X className="h-5 w-5" aria-hidden="true" />
-              ) : (
-                <Menu className="h-5 w-5" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Desktop nav — always visible */}
+        {/* Nav links — below logo */}
         <nav
           id="main-nav"
           aria-label="Разделы"
-          className={`flex-wrap items-center gap-1 text-sm md:flex ${menuOpen ? "flex" : "hidden"}`}
+          className={`mt-3 flex-wrap items-center gap-1 md:flex ${menuOpen ? "flex" : "hidden"}`}
         >
           {navLinks.map((link) => (
             <a
@@ -150,6 +100,56 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
+
+        {/* Controls — vertically centered, pinned right */}
+        <div className="absolute right-6 top-1/2 flex -translate-y-1/2 items-center gap-2 lg:right-8">
+          <div className="inline-flex items-center rounded-xl border border-border/40 bg-card p-1">
+            <button
+              type="button"
+              onClick={() => setLang("ru")}
+              className={`interactive-ease min-h-[48px] min-w-[48px] rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "ru" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+              aria-pressed={lang === "ru"}
+              aria-label={copy.header.langRu}
+            >
+              {"RU"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setLang("kk")}
+              className={`interactive-ease min-h-[48px] min-w-[48px] rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${lang === "kk" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
+              aria-pressed={lang === "kk"}
+              aria-label={copy.header.langKk}
+            >
+              {"KZ"}
+            </button>
+          </div>
+          <button
+            ref={magnifierButtonRef}
+            type="button"
+            onClick={toggleMagnifier}
+            className={`interactive-ease flex h-12 w-12 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary ${magnifierEnabled ? "text-primary" : ""}`}
+            aria-label={copy.header.magnifierLabel}
+            aria-pressed={magnifierEnabled}
+          >
+            <ZoomIn className="h-5 w-5" aria-hidden="true" />
+          </button>
+
+          {/* Hamburger toggle — visible only on small screens */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="interactive-ease flex h-12 w-12 items-center justify-center rounded-xl border border-border/40 bg-card text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:hidden"
+            aria-label={menuOpen ? copy.header.menuClose : copy.header.menuOpen}
+            aria-expanded={menuOpen}
+            aria-controls="main-nav"
+          >
+            {menuOpen ? (
+              <X className="h-5 w-5" aria-hidden="true" />
+            ) : (
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            )}
+          </button>
+        </div>
       </div>
     </header>
   )

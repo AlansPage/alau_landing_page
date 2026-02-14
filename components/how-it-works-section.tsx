@@ -9,6 +9,8 @@ import {
 
 import { getI18n } from "@/lib/i18n"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
+import { MiniSparkle } from "@/components/decorations/mini-sparkle"
+import { StarFigure } from "@/components/decorations/star-figure"
 import { useLanguage } from "@/components/language-provider"
 
 const stepIcons = [MessageCircle, ClipboardList, MonitorPlay, Briefcase] as const
@@ -29,6 +31,16 @@ export function HowItWorksSection() {
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute right-10 top-16 h-56 w-56 rounded-full bg-accent/10 blur-[110px]" />
+        {/* Holding figure — far-right, holding spark like a torch */}
+        <div
+          className="figure-sway absolute right-[2%] top-[25%] hidden opacity-[0.11] md:block"
+          style={{ animationDuration: "15s", animationDelay: "-4s" }}
+        >
+          <StarFigure pose="holding" size={90} />
+        </div>
+        <SparkleStar points={4} size={14} color="hsl(35 90% 60%)" className="sparkle-twinkle absolute right-[1%] top-[22%] hidden opacity-[0.14] md:block" style={{ animationDuration: "3.8s", animationDelay: "-1.2s" }} />
+        <MiniSparkle size={10} color="hsl(280 60% 65%)" className="sparkle-twinkle absolute right-[5%] top-[40%] hidden opacity-[0.12] md:block" style={{ animationDuration: "4.4s", animationDelay: "-2.6s" }} />
+        <SparkleStar points={6} size={12} color="hsl(340 70% 65%)" className="sparkle-twinkle absolute right-[3%] top-[48%] hidden opacity-[0.10] md:block" style={{ animationDuration: "3.4s", animationDelay: "-0.5s" }} />
       </div>
       <div className="mx-auto max-w-6xl">
         <div className="relative inline-block">

@@ -17,14 +17,16 @@ export function SocialProofSection() {
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute right-1/3 top-12 h-52 w-52 rounded-full bg-accent/8 blur-[120px]" />
-        {/* Sitting figure — bottom-left, between social proof and contact */}
-        <div className="absolute bottom-2 left-[6%] hidden opacity-[0.09] md:block">
-          <StarFigure pose="sitting" size={76} />
+        {/* Sitting figure — bottom-right, calm breathe animation */}
+        <div
+          className="figure-breathe absolute bottom-4 right-[4%] hidden opacity-[0.09] md:block"
+          style={{ animationDuration: "10s", animationDelay: "-3s" }}
+        >
+          <StarFigure pose="sitting" size={75} />
         </div>
-        <MiniSparkle size={7} color="hsl(280 60% 65%)" className="absolute bottom-8 left-[4%] hidden opacity-[0.12] md:block" />
-        <MiniSparkle size={6} color="hsl(35 90% 60%)" className="absolute bottom-20 left-[10%] hidden opacity-[0.10] md:block" />
-        <MiniSparkle size={5} color="hsl(195 100% 55%)" className="absolute bottom-4 left-[14%] hidden opacity-[0.11] md:block" />
-        <MiniSparkle size={8} color="hsl(340 70% 65%)" className="absolute bottom-16 left-[3%] hidden opacity-[0.09] md:block" />
+        <MiniSparkle size={10} color="hsl(280 60% 65%)" className="sparkle-twinkle absolute bottom-8 right-[3%] hidden opacity-[0.12] md:block" style={{ animationDuration: "4s", animationDelay: "-1.5s" }} />
+        <SparkleStar points={4} size={12} color="hsl(35 90% 60%)" className="sparkle-twinkle absolute bottom-20 right-[8%] hidden opacity-[0.10] md:block" style={{ animationDuration: "3.6s", animationDelay: "-2.5s" }} />
+        <MiniSparkle size={8} color="hsl(340 70% 65%)" className="sparkle-twinkle absolute bottom-4 right-[10%] hidden opacity-[0.09] md:block" style={{ animationDuration: "4.4s", animationDelay: "-0.8s" }} />
       </div>
 
       <div className="mx-auto max-w-6xl">
