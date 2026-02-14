@@ -102,7 +102,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Controls — vertically centered, pinned right */}
-        <div className="absolute right-6 top-1/2 flex -translate-y-1/2 items-center gap-2 lg:right-8">
+        <div className="absolute inset-y-0 right-6 flex items-center gap-2 lg:right-8">
           <div className="inline-flex items-center rounded-xl border border-border/40 bg-card p-1">
             <button
               type="button"
