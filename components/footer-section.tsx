@@ -109,7 +109,7 @@ export function FooterSection() {
         {/* Copyright — gradient separator */}
         <div className="mt-16">
           <div className="h-px bg-gradient-to-r from-transparent via-border/30 to-transparent" aria-hidden="true" />
-          <p className="mt-8 text-center text-xs text-muted-foreground">
+          <p className="mt-8 text-center text-[13px] text-muted-foreground">
             {copy.copyright}
           </p>
         </div>

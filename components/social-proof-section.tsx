@@ -83,6 +83,10 @@ export function SocialProofSection() {
             </blockquote>
           ))}
         </div>
+
+        <p className="mt-6 text-center text-sm italic text-muted-foreground">
+          {copy.quotesNote}
+        </p>
       </div>
     </section>
   )

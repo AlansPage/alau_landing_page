@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ru_RU',
     siteName: 'ALAU',
+    images: [{ url: '/brand/alau-wordmark.png', width: 640, height: 160 }],
   },
   twitter: {
     card: 'summary_large_image',

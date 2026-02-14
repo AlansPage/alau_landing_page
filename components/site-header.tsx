@@ -68,7 +68,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className="sticky top-1 z-40 border-b border-border/30 bg-background/80 backdrop-blur"
+      className="sticky top-0 z-40 border-b border-border/30 bg-background/80 backdrop-blur"
       aria-label="Верхняя панель"
       ref={headerRef}
     >
@@ -102,7 +102,7 @@ export function SiteHeader() {
         </nav>
 
         {/* Controls — vertically centered, pinned right */}
-        <div className="absolute inset-y-0 right-6 flex items-center gap-2 lg:right-8">
+        <div className="absolute right-6 top-5 flex items-center gap-2 lg:right-8">
           <div className="inline-flex items-center rounded-xl border border-border/40 bg-card p-1">
             <button
               type="button"

@@ -67,6 +67,7 @@ type I18nDict = {
       name: string
       role: string
     }>
+    quotesNote: string
   }
   contact: {
     title: string
@@ -75,6 +76,7 @@ type I18nDict = {
     lastName: string
     company: string
     email: string
+    phone: string
     message: string
     submit: string
     success: string
@@ -234,6 +236,7 @@ export const I18N: Record<Language, I18nDict> = {
           role: "HR-менеджер, нарушение слуха",
         },
       ],
+      quotesNote: "* Отзывы будут обновлены",
     },
     contact: {
       title: "Свяжитесь с нами",
@@ -242,6 +245,7 @@ export const I18N: Record<Language, I18nDict> = {
       lastName: "Фамилия",
       company: "Компания",
       email: "Email",
+      phone: "Телефон (необязательно)",
       message: "Опишите ваши потребности",
       submit: "Отправить заявку",
       success: "Спасибо! Мы свяжемся с вами в ближайшее время.",
@@ -430,6 +434,7 @@ export const I18N: Record<Language, I18nDict> = {
           role: "HR-менеджер, есту бұзылысы",
         },
       ],
+      quotesNote: "* Пікірлер жаңартылады",
     },
     contact: {
       title: "Бізбен байланысыңыз",
@@ -438,6 +443,7 @@ export const I18N: Record<Language, I18nDict> = {
       lastName: "Тегі",
       company: "Компания",
       email: "Email",
+      phone: "Телефон (міндетті емес)",
       message: "Қажеттіліктеріңізді сипаттаңыз",
       submit: "Өтінім жіберу",
       success: "Рахмет! Жақын арада сізбен хабарласамыз.",

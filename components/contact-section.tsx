@@ -188,6 +188,20 @@ export function ContactSection() {
                         className={inputClass}
                       />
                     </div>
+                    <div className="flex flex-col gap-2 sm:col-span-2">
+                      <label
+                        htmlFor="contact-phone"
+                        className="text-sm font-medium text-foreground"
+                      >
+                        {copy.phone}
+                      </label>
+                      <input
+                        id="contact-phone"
+                        type="tel"
+                        autoComplete="tel"
+                        className={inputClass}
+                      />
+                    </div>
                   </div>
 
                   <div className="mt-5 flex flex-col gap-2">
