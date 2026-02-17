@@ -14,13 +14,8 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="hero relative overflow-hidden bg-[hsl(var(--paper))] px-6 pb-24 pt-16 md:pb-32 md:pt-20 lg:px-8"
+      className="hero relative overflow-hidden px-6 pb-24 pt-16 md:pb-32 md:pt-20 lg:px-8"
     >
-      {/* Subtle ambient background */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -top-20 left-[40%] h-[720px] w-[920px] -translate-x-1/2 rounded-full bg-primary/10 blur-[180px]" />
-        <div className="absolute -bottom-24 right-0 h-[360px] w-[520px] rounded-full bg-accent/4 blur-[110px]" />
-      </div>
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[1.08fr_0.92fr] md:gap-10 lg:gap-16">
         {/* Text content */}

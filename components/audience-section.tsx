@@ -1,6 +1,6 @@
 "use client"
 
-import { Eye, Ear, Hand, Brain } from "lucide-react"
+import Image from "next/image"
 
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
@@ -8,13 +8,18 @@ import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
-const audienceIcons = [Eye, Ear, Hand, Brain] as const
+const audienceImages = [
+  { src: "/images/access-vision.cutout.png", alt: "Зрение" },
+  { src: "/images/access-hearing.cutout.png", alt: "Слух" },
+  { src: "/images/access-motor.cutout.png", alt: "Моторика" },
+  { src: "/images/access-cognitive.cutout.png", alt: "Когнитивные функции" },
+] as const
 
 export function AudienceSection() {
   const { lang } = useLanguage()
   const copy = getI18n(lang).audience
   const audienceCards = copy.cards.map((card, index) => ({
-    icon: audienceIcons[index],
+    image: audienceImages[index],
     ...card,
   }))
 
@@ -64,7 +69,7 @@ export function AudienceSection() {
           style={{ transitionDelay: "120ms" }}
           data-reveal
         >
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
             {audienceCards.map((card, idx) => (
               <article
                 key={card.title}
@@ -94,11 +99,14 @@ export function AudienceSection() {
                   </svg>
                 </div>
 
-                {/* Icon in rounded square container */}
-                <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
-                  <card.icon
-                    className="h-8 w-8 text-primary"
-                    aria-hidden="true"
+                {/* Transparent visual slot for accessibility illustration */}
+                <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-border/15 bg-transparent shadow-none">
+                  <Image
+                    src={card.image.src}
+                    alt={card.image.alt}
+                    fill
+                    className="object-contain object-center opacity-[0.92] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)]"
+                    sizes="96px"
                   />
                 </div>
                 <h3 className="relative mt-6 text-xl font-semibold text-foreground">

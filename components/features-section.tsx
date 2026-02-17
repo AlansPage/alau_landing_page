@@ -1,7 +1,6 @@
 "use client"
 
-import Image from "next/image"
-import { Flame } from "lucide-react"
+import { Flame, Mic, SunMedium, MonitorPlay, ClipboardCheck } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
 import { getI18n } from "@/lib/i18n"
@@ -10,12 +9,7 @@ import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
-const featureImages = [
-  { src: "/images/access-vision.png", alt: "Зрение" },
-  { src: "/images/access-hearing.png", alt: "Слух" },
-  { src: "/images/access-motor.png", alt: "Моторика" },
-  { src: "/images/access-cognitive.png", alt: "Когнитивные функции" },
-] as const
+const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
 
 /* Separator sparkle between feature rows */
 const separatorColors = ["hsl(280 60% 65%)", "hsl(35 90% 60%)", "hsl(340 70% 65%)"]
@@ -71,7 +65,7 @@ export function FeaturesSection() {
 
         <div className="mt-16 flex flex-col">
           {copy.items.map((item, idx) => {
-            const featureImage = featureImages[idx]
+            const Icon = featureIcons[idx]
             const reversed = idx % 2 !== 0
             return (
               <div key={idx}>
@@ -107,19 +101,13 @@ export function FeaturesSection() {
                     </p>
                   </div>
 
-                  {/* Visual side — framed image */}
+                  {/* Visual side — platform feature icon */}
                   <div className="flex flex-1 items-center justify-center">
                     <div
-                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/20 bg-transparent p-2 md:h-52 md:w-52"
+                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/30 bg-[hsl(var(--surface)/0.45)] md:h-52 md:w-52"
                     >
-                      <div className="relative h-full w-full overflow-hidden rounded-xl bg-transparent">
-                        <Image
-                          src={featureImage.src}
-                          alt={featureImage.alt}
-                          fill
-                          className="object-contain object-center opacity-[0.9] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)]"
-                          sizes="(min-width: 768px) 208px, 176px"
-                        />
+                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.12)] to-[hsl(var(--flame-hot)/0.12)] md:h-24 md:w-24">
+                        <Icon className="h-10 w-10 text-primary md:h-11 md:w-11" aria-hidden="true" />
                       </div>
                     </div>
                   </div>

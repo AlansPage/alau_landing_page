@@ -61,7 +61,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className="sticky top-0 z-40 border-b border-border/30 bg-background/80 backdrop-blur"
+      className="sticky top-0 z-40 border-b border-border/35 bg-[hsl(var(--paper-bg)/0.95)]"
       aria-label="Верхняя панель"
       ref={headerRef}
     >

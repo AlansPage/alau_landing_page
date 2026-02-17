@@ -124,6 +124,7 @@
 
     /* Surface panel token (warm folded-crease) */
     --surface: 30 22% 93%;
+    --paper-bg: 32 30% 95%;
     --paper: 34 36% 92%;
 
     /* Blue flame gradient tokens */
@@ -143,7 +144,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--paper-bg));
+    @apply text-foreground;
   }
 
   /* Paper texture — barely-visible noise grain */
