@@ -11,10 +11,10 @@ import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
 const featureImages = [
-  { src: "/images/access-vision.jpg", alt: "Зрение" },
-  { src: "/images/access-hearing.jpg", alt: "Слух" },
-  { src: "/images/access-motor.jpg", alt: "Моторика" },
-  { src: "/images/access-cognitive.jpg", alt: "Когнитивные функции" },
+  { src: "/images/access-vision.png", alt: "Зрение" },
+  { src: "/images/access-hearing.png", alt: "Слух" },
+  { src: "/images/access-motor.png", alt: "Моторика" },
+  { src: "/images/access-cognitive.png", alt: "Когнитивные функции" },
 ] as const
 
 /* Separator sparkle between feature rows */
@@ -110,19 +110,15 @@ export function FeaturesSection() {
                   {/* Visual side — framed image */}
                   <div className="flex flex-1 items-center justify-center">
                     <div
-                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/50 bg-card/60 p-2 shadow-lg shadow-background/35 backdrop-blur-[2px] md:h-52 md:w-52"
+                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/20 bg-transparent p-2 md:h-52 md:w-52"
                     >
-                      <div className="relative h-full w-full overflow-hidden rounded-xl bg-muted/40">
+                      <div className="relative h-full w-full overflow-hidden rounded-xl bg-transparent">
                         <Image
                           src={featureImage.src}
                           alt={featureImage.alt}
                           fill
-                          className="object-cover opacity-[0.9] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)]"
+                          className="object-contain object-center opacity-[0.9] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)]"
                           sizes="(min-width: 768px) 208px, 176px"
-                        />
-                        <div
-                          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--paper)/0.22)_0%,transparent_45%,hsl(var(--paper)/0.18)_100%)]"
-                          aria-hidden="true"
                         />
                       </div>
                     </div>

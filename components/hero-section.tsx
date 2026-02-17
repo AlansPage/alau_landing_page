@@ -72,10 +72,10 @@ export function HeroSection() {
           role="presentation"
         >
           <div
-            className="flex h-[208px] w-full max-w-[300px] items-center justify-center rounded-2xl border border-border/50 bg-card/60 p-2 shadow-lg shadow-background/35 backdrop-blur-[2px] md:h-[360px] md:max-w-[460px] lg:h-[420px] lg:max-w-[520px]"
+            className="flex h-[224px] w-full max-w-[320px] items-center justify-center bg-transparent md:h-[380px] md:max-w-[480px] lg:h-[440px] lg:max-w-[540px]"
           >
             <div
-              className="relative h-full w-full overflow-hidden rounded-xl bg-muted/40"
+              className="relative h-full w-full overflow-hidden bg-transparent"
               style={{
                 WebkitMaskImage:
                   "radial-gradient(125% 115% at 50% 45%, black 60%, transparent 100%)",
@@ -84,17 +84,13 @@ export function HeroSection() {
               }}
             >
               <Image
-                src="/images/hero-walkers.jpg"
+                src="/images/hero-walkers.png"
                 alt=""
                 aria-hidden="true"
                 fill
                 priority
-                sizes="(min-width: 1024px) 520px, (min-width: 768px) 460px, 300px"
-                className="object-cover opacity-[0.55] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)] mix-blend-normal md:opacity-[0.68] md:mix-blend-multiply"
-              />
-              <div
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--paper)/0.35)_0%,transparent_28%,transparent_74%,hsl(var(--paper)/0.30)_100%)]"
-                aria-hidden="true"
+                sizes="(min-width: 1024px) 540px, (min-width: 768px) 480px, 320px"
+                className="object-contain object-center opacity-[0.5] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)] mix-blend-multiply md:opacity-[0.62]"
               />
             </div>
           </div>

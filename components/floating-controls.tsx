@@ -68,7 +68,7 @@ export function FloatingControls() {
       <div className="pointer-events-none select-none opacity-80" aria-hidden="true">
         <div className="relative h-[42px] w-[42px] overflow-hidden rounded-lg border border-border/50 bg-background/60">
           <Image
-            src="/images/accessibility-badge.jpg"
+            src="/images/accessibility-badge.png"
             alt=""
             fill
             className="object-cover"
