@@ -1,6 +1,7 @@
 "use client"
 
-import { Flame, Mic, SunMedium, MonitorPlay, ClipboardCheck } from "lucide-react"
+import Image from "next/image"
+import { Flame } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
 import { getI18n } from "@/lib/i18n"
@@ -9,144 +10,11 @@ import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
-const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
-
-/* --- Four unique decorative visuals, one per feature --- */
-
-/* 0 — Radial glow with concentric rings (voice / microphone) */
-function FeatureVisualGlow() {
-  return (
-    <svg viewBox="0 0 280 220" className="h-full w-full">
-      <defs>
-        <radialGradient id="fv-glow" cx="50%" cy="45%" r="55%">
-          <stop offset="0%" stopColor="hsl(var(--flame-core) / 0.30)" />
-          <stop offset="60%" stopColor="hsl(var(--flame-hot) / 0.10)" />
-          <stop offset="100%" stopColor="transparent" />
-        </radialGradient>
-      </defs>
-      <rect width="280" height="220" rx="24" fill="url(#fv-glow)" />
-      <circle cx="140" cy="100" r="60" fill="none" stroke="hsl(var(--flame-core) / 0.15)" strokeWidth="1.5" />
-      <circle cx="140" cy="100" r="42" fill="none" stroke="hsl(var(--flame-hot) / 0.18)" strokeWidth="1.2" />
-      <circle cx="140" cy="100" r="22" fill="hsl(var(--flame-core) / 0.12)" />
-      <circle cx="140" cy="100" r="8" fill="hsl(var(--flame-hot) / 0.25)" />
-    </svg>
-  )
-}
-
-/* 1 — Starburst with short rays (accessibility / light) */
-function FeatureVisualStarburst() {
-  const rays = [0, 45, 90, 135, 180, 225, 270, 315]
-  return (
-    <svg viewBox="0 0 280 220" className="h-full w-full">
-      <defs>
-        <radialGradient id="fv-star-bg" cx="50%" cy="45%" r="60%">
-          <stop offset="0%" stopColor="hsl(var(--flame-hot) / 0.18)" />
-          <stop offset="100%" stopColor="transparent" />
-        </radialGradient>
-      </defs>
-      <rect width="280" height="220" rx="24" fill="url(#fv-star-bg)" />
-      {rays.map((angle, i) => {
-        const rad = (angle * Math.PI) / 180
-        const cx = 140, cy = 105
-        const len = 38 + (i % 3) * 10
-        return (
-          <line
-            key={i}
-            x1={cx + Math.cos(rad) * 12}
-            y1={cy + Math.sin(rad) * 12}
-            x2={cx + Math.cos(rad) * len}
-            y2={cy + Math.sin(rad) * len}
-            stroke="hsl(var(--flame-core) / 0.20)"
-            strokeWidth={2.2 - (i % 2) * 0.6}
-            strokeLinecap="round"
-          />
-        )
-      })}
-      <circle cx="140" cy="105" r="14" fill="hsl(var(--flame-hot) / 0.15)" />
-      <circle cx="140" cy="105" r="6" fill="hsl(var(--flame-core) / 0.22)" />
-    </svg>
-  )
-}
-
-/* 2 — Flowing curves (video / streaming) */
-function FeatureVisualCurves() {
-  return (
-    <svg viewBox="0 0 280 220" className="h-full w-full">
-      <defs>
-        <radialGradient id="fv-curves-bg" cx="30%" cy="40%" r="70%">
-          <stop offset="0%" stopColor="hsl(260 60% 55% / 0.15)" />
-          <stop offset="100%" stopColor="transparent" />
-        </radialGradient>
-      </defs>
-      <rect width="280" height="220" rx="24" fill="url(#fv-curves-bg)" />
-      <path
-        d="M30 140 C 70 80, 120 160, 160 100 S 230 60, 260 110"
-        fill="none" stroke="hsl(var(--flame-core) / 0.18)" strokeWidth="3" strokeLinecap="round"
-      />
-      <path
-        d="M20 160 C 60 110, 110 180, 150 130 S 220 90, 265 135"
-        fill="none" stroke="hsl(var(--flame-hot) / 0.14)" strokeWidth="2.5" strokeLinecap="round"
-      />
-      <path
-        d="M40 175 C 80 135, 130 190, 170 155 S 240 120, 270 155"
-        fill="none" stroke="hsl(var(--flame-deep) / 0.10)" strokeWidth="2" strokeLinecap="round"
-      />
-      <circle cx="90" cy="80" r="28" fill="hsl(var(--flame-core) / 0.08)" />
-      <circle cx="200" cy="70" r="20" fill="hsl(var(--flame-hot) / 0.10)" />
-    </svg>
-  )
-}
-
-/* 3 — Dotted constellation grid (assessment / checklist) */
-function FeatureVisualConstellation() {
-  const dots = [
-    { x: 60, y: 50, r: 4 }, { x: 120, y: 40, r: 3 }, { x: 190, y: 55, r: 5 }, { x: 230, y: 45, r: 3 },
-    { x: 80, y: 100, r: 5 }, { x: 140, y: 110, r: 6 }, { x: 200, y: 95, r: 4 },
-    { x: 50, y: 155, r: 3 }, { x: 110, y: 160, r: 4 }, { x: 170, y: 150, r: 5 }, { x: 240, y: 165, r: 3 },
-  ]
-  const lines = [
-    [0, 1], [1, 2], [2, 3], [4, 5], [5, 6], [7, 8], [8, 9], [9, 10], [1, 5], [5, 9],
-  ]
-  return (
-    <svg viewBox="0 0 280 220" className="h-full w-full">
-      <defs>
-        <radialGradient id="fv-const-bg" cx="55%" cy="50%" r="60%">
-          <stop offset="0%" stopColor="hsl(35 90% 55% / 0.12)" />
-          <stop offset="100%" stopColor="transparent" />
-        </radialGradient>
-      </defs>
-      <rect width="280" height="220" rx="24" fill="url(#fv-const-bg)" />
-      {lines.map(([a, b], i) => (
-        <line
-          key={i}
-          x1={dots[a].x} y1={dots[a].y}
-          x2={dots[b].x} y2={dots[b].y}
-          stroke="hsl(var(--flame-core) / 0.12)"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-        />
-      ))}
-      {dots.map((d, i) => (
-        <circle
-          key={i}
-          cx={d.x} cy={d.y} r={d.r}
-          fill={i % 3 === 0
-            ? "hsl(var(--flame-hot) / 0.22)"
-            : i % 3 === 1
-              ? "hsl(var(--flame-core) / 0.18)"
-              : "hsl(35 90% 55% / 0.20)"
-          }
-        />
-      ))}
-    </svg>
-  )
-}
-
-const featureVisuals = [
-  FeatureVisualGlow,
-  FeatureVisualStarburst,
-  FeatureVisualCurves,
-  FeatureVisualConstellation,
+const featureImages = [
+  { src: "/images/access-vision.jpg", alt: "Зрение" },
+  { src: "/images/access-hearing.jpg", alt: "Слух" },
+  { src: "/images/access-motor.jpg", alt: "Моторика" },
+  { src: "/images/access-cognitive.jpg", alt: "Когнитивные функции" },
 ] as const
 
 /* Separator sparkle between feature rows */
@@ -203,8 +71,7 @@ export function FeaturesSection() {
 
         <div className="mt-16 flex flex-col">
           {copy.items.map((item, idx) => {
-            const Icon = featureIcons[idx]
-            const Visual = featureVisuals[idx]
+            const featureImage = featureImages[idx]
             const reversed = idx % 2 !== 0
             return (
               <div key={idx}>
@@ -232,13 +99,7 @@ export function FeaturesSection() {
                 >
                   {/* Text side */}
                   <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
-                      <Icon
-                        className="h-7 w-7 text-primary"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <h3 className="mt-5 text-xl font-semibold text-foreground md:text-2xl">
+                    <h3 className="text-xl font-semibold text-foreground md:text-2xl">
                       {item.title}
                     </h3>
                     <p className="mt-3 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -246,13 +107,24 @@ export function FeaturesSection() {
                     </p>
                   </div>
 
-                  {/* Visual side — unique abstract decoration per feature */}
+                  {/* Visual side — framed image */}
                   <div className="flex flex-1 items-center justify-center">
                     <div
-                      className="pointer-events-none w-full max-w-[320px] rounded-3xl border border-border/50 bg-card/80 p-5 shadow-lg shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
-                      aria-hidden="true"
+                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/50 bg-card/60 p-2 shadow-lg shadow-background/35 backdrop-blur-[2px] md:h-52 md:w-52"
                     >
-                      <Visual />
+                      <div className="relative h-full w-full overflow-hidden rounded-xl bg-muted/40">
+                        <Image
+                          src={featureImage.src}
+                          alt={featureImage.alt}
+                          fill
+                          className="object-cover opacity-[0.9] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)]"
+                          sizes="(min-width: 768px) 208px, 176px"
+                        />
+                        <div
+                          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--paper)/0.22)_0%,transparent_45%,hsl(var(--paper)/0.18)_100%)]"
+                          aria-hidden="true"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
