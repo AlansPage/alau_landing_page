@@ -72,7 +72,7 @@ export function HeroSection() {
           role="presentation"
         >
           <div
-            className="flex h-[224px] w-full max-w-[320px] items-center justify-center bg-transparent md:h-[380px] md:max-w-[480px] lg:h-[440px] lg:max-w-[540px]"
+            className="flex h-[248px] w-full max-w-[340px] items-center justify-center bg-transparent md:h-[420px] md:max-w-[540px] lg:h-[500px] lg:max-w-[620px]"
           >
             <div
               className="relative h-full w-full overflow-hidden bg-transparent"
@@ -89,7 +89,7 @@ export function HeroSection() {
                 aria-hidden="true"
                 fill
                 priority
-                sizes="(min-width: 1024px) 540px, (min-width: 768px) 480px, 320px"
+                sizes="(min-width: 1024px) 620px, (min-width: 768px) 540px, 340px"
                 className="object-contain object-center opacity-[0.5] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)] mix-blend-multiply md:opacity-[0.62]"
               />
             </div>
