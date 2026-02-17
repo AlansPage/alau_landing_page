@@ -65,7 +65,7 @@ export function AudienceSection() {
 
         {/* Soft surface panel behind cards (airy / EPAM-like rhythm) */}
         <div
-          className="reveal mt-14 rounded-[2.5rem] border border-border/30 bg-surface/70 p-6 shadow-xl shadow-background/50 shadow-[inset_0_1px_0_hsl(var(--flame-glow))] backdrop-blur-sm sm:p-8 lg:p-10"
+          className="reveal mt-14 rounded-[2.5rem] border border-border/20 bg-transparent p-6 shadow-none sm:p-8 lg:p-10"
           style={{ transitionDelay: "120ms" }}
           data-reveal
         >
@@ -99,8 +99,8 @@ export function AudienceSection() {
                   </svg>
                 </div>
 
-                {/* Transparent visual slot for accessibility illustration */}
-                <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-border/15 bg-transparent shadow-none">
+                {/* Icon in rounded square container */}
+                <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-border/10 bg-transparent">
                   <Image
                     src={card.image.src}
                     alt={card.image.alt}
