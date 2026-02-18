@@ -46,15 +46,15 @@ export default function RootLayout({
   return (
     <html lang="ru" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <div className="relative isolate min-h-screen overflow-hidden">
+        <div className="relative isolate min-h-screen overflow-x-hidden">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0 bg-[url('/images/sparkles.jpg')] bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.14] md:opacity-[0.18]"
+            className="pointer-events-none absolute inset-0 z-0 bg-[url('/images/sparkles.jpg')] bg-cover bg-top bg-no-repeat opacity-[0.11] md:opacity-[0.14]"
             style={{
               WebkitMaskImage:
-                "radial-gradient(130% 105% at 50% 24%, transparent 0%, rgba(0,0,0,0.10) 26%, black 56%, black 100%)",
+                "radial-gradient(130% 105% at 50% 24%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.7) 32%, black 62%, black 100%)",
               maskImage:
-                "radial-gradient(130% 105% at 50% 24%, transparent 0%, rgba(0,0,0,0.10) 26%, black 56%, black 100%)",
+                "radial-gradient(130% 105% at 50% 24%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.7) 32%, black 62%, black 100%)",
             }}
           />
           <div className="relative z-10">

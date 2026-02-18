@@ -23,7 +23,7 @@ export default function Page() {
       <SiteHeader />
       <RevealInitializer />
 
-      <main id="main-content">
+      <main id="main-content" className="pt-[var(--header-h)]">
         <FloatingControls />
         <HeroSection />
         <AudienceSection />

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 
 import { Logo } from "@/components/logo"
 import { getI18n } from "@/lib/i18n"
@@ -8,13 +8,12 @@ import { SITE } from "@/lib/site-config"
 import { useLanguage } from "@/components/language-provider"
 
 const NAV_LINK_CLASS =
-  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-[18px] font-semibold tracking-[0.01em] text-foreground/85 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null)
   const { lang } = useLanguage()
   const copy = getI18n(lang)
-  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const header = headerRef.current
@@ -40,15 +39,6 @@ export function SiteHeader() {
     }
   }, [])
 
-  // Listen for toggle event from floating controls
-  useEffect(() => {
-    const handler = () => setMenuOpen((prev) => !prev)
-    window.addEventListener("toggle-mobile-nav", handler)
-    return () => window.removeEventListener("toggle-mobile-nav", handler)
-  }, [])
-
-  const handleNavClick = () => setMenuOpen(false)
-
   const navLinks = [
     { href: "#hero", label: copy.header.home },
     { href: "#audience", label: copy.header.audience },
@@ -61,7 +51,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className="sticky top-0 z-40 border-b border-border/35 bg-[hsl(var(--paper-bg)/0.95)]"
+      className="fixed inset-x-0 top-0 z-40 border-b border-border/35 bg-[hsl(var(--paper-bg)/0.95)] backdrop-blur-sm"
       aria-label="Верхняя панель"
       ref={headerRef}
     >
@@ -78,14 +68,13 @@ export function SiteHeader() {
         <nav
           id="main-nav"
           aria-label="Разделы"
-          className={`flex-wrap items-center justify-center gap-1 md:flex ${menuOpen ? "flex" : "hidden"}`}
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:gap-x-5"
         >
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className={NAV_LINK_CLASS}
-              onClick={handleNavClick}
             >
               {link.label}
             </a>
