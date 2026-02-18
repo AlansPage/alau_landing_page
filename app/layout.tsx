@@ -44,8 +44,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className={inter.variable}>
-      <body className="font-sans antialiased">
+    <html lang="ru" className={inter.variable} suppressHydrationWarning>
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <div className="relative isolate min-h-screen overflow-hidden">
           <div
             aria-hidden="true"
