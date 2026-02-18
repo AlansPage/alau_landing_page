@@ -70,42 +70,19 @@ export function AudienceSection() {
           data-reveal
         >
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-            {audienceCards.map((card, idx) => (
+            {audienceCards.map((card) => (
               <article
                 key={card.title}
                 aria-label={card.ariaLabel}
-                className="hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-[hsl(var(--paper-bg)/0.78)] p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
+                className="hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-[#f3eee3] p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
               >
-                {/* Decorative background pattern */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-[0.30]"
-                  aria-hidden="true"
-                >
-                  <svg viewBox="0 0 220 220" className="h-full w-full">
-                    <defs>
-                      <radialGradient id={`aud-${idx}`} cx="30%" cy="25%" r="80%">
-                        <stop offset="0" stopColor="hsl(212 100% 47% / 0.22)" />
-                        <stop offset="1" stopColor="transparent" />
-                      </radialGradient>
-                    </defs>
-                    <rect width="220" height="220" fill={`url(#aud-${idx})`} />
-                    <path
-                      d="M-10 150 C 40 100, 90 210, 140 150 S 220 140, 250 80"
-                      fill="none"
-                      stroke="hsl(200 100% 44% / 0.20)"
-                      strokeWidth="6"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-
                 {/* Icon in rounded square container */}
-                <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-transparent shadow-none backdrop-blur-none ring-1 ring-border/10">
+                <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-[#f3eee3] shadow-none backdrop-blur-none ring-1 ring-border/10">
                   <Image
                     src={card.image.src}
                     alt={card.image.alt}
                     fill
-                    className="object-contain object-center opacity-[0.92] [filter:saturate(0.9)_contrast(0.95)_brightness(1.02)]"
+                    className="object-contain object-center opacity-[0.95]"
                     sizes="96px"
                   />
                 </div>
