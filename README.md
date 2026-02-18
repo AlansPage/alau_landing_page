@@ -15,6 +15,32 @@ npm run dev
 
 Open: http://localhost:3000
 
+## Accessibility audit workflow (WCAG 2.2 AA)
+
+Install dependencies:
+
+```bash
+npm install
+npx playwright install chromium
+```
+
+Run accessibility linting (React/Next JSX rules):
+
+```bash
+npm run a11y:lint
+```
+
+Run automated axe scan on homepage:
+
+```bash
+npm run a11y:test
+```
+
+Notes:
+
+- `a11y:lint` uses `eslint-plugin-jsx-a11y` + `eslint-config-next`.
+- `a11y:test` starts the app on `http://127.0.0.1:4173` and runs Playwright + axe against `/`.
+
 ## Configure links
 
 Edit:

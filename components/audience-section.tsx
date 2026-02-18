@@ -74,7 +74,7 @@ export function AudienceSection() {
               <article
                 key={card.title}
                 aria-label={card.ariaLabel}
-                className="hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
+                className="hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-[hsl(var(--paper-bg)/0.78)] p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
               >
                 {/* Decorative background pattern */}
                 <div
@@ -100,7 +100,7 @@ export function AudienceSection() {
                 </div>
 
                 {/* Icon in rounded square container */}
-                <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-border/10 bg-transparent">
+                <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-transparent shadow-none backdrop-blur-none ring-1 ring-border/10">
                   <Image
                     src={card.image.src}
                     alt={card.image.alt}

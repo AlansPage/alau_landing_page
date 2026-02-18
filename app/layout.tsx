@@ -49,17 +49,19 @@ export default function RootLayout({
         <div className="relative isolate min-h-screen overflow-hidden">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[url('/images/sparkles.jpg')] bg-cover bg-center bg-no-repeat opacity-[0.04] md:opacity-[0.06]"
+            className="pointer-events-none absolute inset-0 z-0 bg-[url('/images/sparkles.jpg')] bg-cover bg-center bg-no-repeat mix-blend-screen opacity-[0.14] md:opacity-[0.18]"
             style={{
               WebkitMaskImage:
-                "radial-gradient(130% 105% at 50% 26%, transparent 0%, rgba(0,0,0,0.20) 38%, black 72%, black 100%)",
+                "radial-gradient(130% 105% at 50% 24%, transparent 0%, rgba(0,0,0,0.10) 26%, black 56%, black 100%)",
               maskImage:
-                "radial-gradient(130% 105% at 50% 26%, transparent 0%, rgba(0,0,0,0.20) 38%, black 72%, black 100%)",
+                "radial-gradient(130% 105% at 50% 24%, transparent 0%, rgba(0,0,0,0.10) 26%, black 56%, black 100%)",
             }}
           />
-          <LanguageProvider>
-            <MagnifierProvider>{children}</MagnifierProvider>
-          </LanguageProvider>
+          <div className="relative z-10">
+            <LanguageProvider>
+              <MagnifierProvider>{children}</MagnifierProvider>
+            </LanguageProvider>
+          </div>
         </div>
       </body>
     </html>

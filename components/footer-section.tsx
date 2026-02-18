@@ -49,9 +49,9 @@ export function FooterSection() {
 
           {/* Sponsors */}
           <div className="flex flex-col gap-4" aria-label={copy.partnersTitle}>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
               {copy.partnersTitle}
-            </h3>
+            </h2>
             <div className="grid grid-cols-2 gap-4">
               {copy.partners.map((partner) => (
                 <div
@@ -72,9 +72,9 @@ export function FooterSection() {
 
           {/* Contacts / social links */}
           <div className="flex flex-col gap-5">
-            <h3 id="contacts" className="anchor-target text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+            <h2 id="contacts" className="anchor-target text-sm font-semibold uppercase tracking-widest text-muted-foreground">
               {copy.contactsTitle}
-            </h3>
+            </h2>
 
             {/* Email — button-styled mailto link */}
             <a

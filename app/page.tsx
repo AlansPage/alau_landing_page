@@ -21,10 +21,10 @@ export default function Page() {
       </a>
 
       <SiteHeader />
-      <FloatingControls />
       <RevealInitializer />
 
       <main id="main-content">
+        <FloatingControls />
         <HeroSection />
         <AudienceSection />
         <HowItWorksSection />

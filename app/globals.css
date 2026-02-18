@@ -15,14 +15,16 @@
     transform: none;
   }
 
-  html[data-reveal-ready="true"] .reveal {
+  html[data-reveal-ready="true"] .reveal:not(.is-visible) {
     opacity: 0;
+    visibility: hidden;
     transform: translateY(14px);
     transition: opacity 500ms ease, transform 500ms ease;
   }
 
   html[data-reveal-ready="true"] .reveal.is-visible {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
   }
 

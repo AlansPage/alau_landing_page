@@ -71,7 +71,7 @@ export function SiteHeader() {
           className="flex w-fit items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           aria-label="На главную"
         >
-          <Logo variant="wordmark" className="h-8 w-auto" priority alt="ALAU" />
+          <Logo variant="wordmark" className="h-8 w-auto" priority decorative />
           <span className="sr-only">{SITE.name}</span>
         </a>
 

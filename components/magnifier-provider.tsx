@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from "react"
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react"
 
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
@@ -48,20 +48,22 @@ export function MagnifierProvider({ children }: { children: React.ReactNode }) {
     }, 2000)
   }, [enabled])
 
-  const setEnabled = (next: boolean) => {
-    if (next && touchUnsupported) {
-      setHintVisible(true)
-      if (hintTimeoutRef.current) window.clearTimeout(hintTimeoutRef.current)
-      hintTimeoutRef.current = window.setTimeout(() => {
-        setHintVisible(false)
-        hintTimeoutRef.current = null
-      }, 2000)
-      return
-    }
-    setEnabledState(next)
-  }
+  const toggle = useCallback(() => {
+    setEnabledState((prev) => {
+      const next = !prev
+      if (next && touchUnsupported) {
+        setHintVisible(true)
+        if (hintTimeoutRef.current) window.clearTimeout(hintTimeoutRef.current)
+        hintTimeoutRef.current = window.setTimeout(() => {
+          setHintVisible(false)
+          hintTimeoutRef.current = null
+        }, 2000)
+        return prev
+      }
+      return next
+    })
+  }, [touchUnsupported])
 
-  const toggle = () => setEnabled(!enabled)
   const setToggleButtonEl = (el: HTMLButtonElement | null) => {
     toggleButtonRef.current = el
   }
@@ -90,7 +92,7 @@ export function MagnifierProvider({ children }: { children: React.ReactNode }) {
 
     const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
     const targetSelector =
-      "main h1, main h2, main h3, main p, main li, main a, footer h3, footer p, footer address, footer a"
+      "main h1, main h2, main h3, main p, main li, main a, footer h2, footer p, footer address, footer a"
     const getTargetAtPoint = (x: number, y: number) => {
       const el = document.elementFromPoint(x, y)
       return el?.closest(targetSelector) as HTMLElement | null
@@ -246,7 +248,7 @@ export function MagnifierProvider({ children }: { children: React.ReactNode }) {
       toggle,
       setToggleButtonEl,
     }),
-    [enabled]
+    [enabled, toggle]
   )
 
   return (

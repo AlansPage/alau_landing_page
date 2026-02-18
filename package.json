@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build --webpack",
-    "start": "next start"
+    "start": "next start",
+    "a11y:lint": "eslint .",
+    "a11y:test": "playwright test tests/a11y/homepage.spec.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -16,10 +18,15 @@
     "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^22",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.6",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
     "typescript": "5.7.3"
