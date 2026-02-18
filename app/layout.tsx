@@ -45,10 +45,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={inter.variable}>
-      <body className="min-h-screen font-sans antialiased">
-        <LanguageProvider>
-          <MagnifierProvider>{children}</MagnifierProvider>
-        </LanguageProvider>
+      <body className="font-sans antialiased">
+        <div className="relative isolate min-h-screen overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[url('/images/sparkles.jpg')] bg-cover bg-center bg-no-repeat opacity-[0.04] md:opacity-[0.06]"
+            style={{
+              WebkitMaskImage:
+                "radial-gradient(130% 105% at 50% 26%, transparent 0%, rgba(0,0,0,0.20) 38%, black 72%, black 100%)",
+              maskImage:
+                "radial-gradient(130% 105% at 50% 26%, transparent 0%, rgba(0,0,0,0.20) 38%, black 72%, black 100%)",
+            }}
+          />
+          <LanguageProvider>
+            <MagnifierProvider>{children}</MagnifierProvider>
+          </LanguageProvider>
+        </div>
       </body>
     </html>
   )

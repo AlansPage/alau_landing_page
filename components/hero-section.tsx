@@ -16,48 +16,48 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
       className="hero relative overflow-hidden px-6 pb-24 pt-16 md:pb-32 md:pt-20 lg:px-8"
     >
-
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[1.08fr_0.92fr] md:gap-10 lg:gap-16">
         {/* Text content */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <h1
-            id="hero-heading"
-            className="anchor-target-zero hero-title reveal max-w-[14ch] text-balance text-5xl font-extrabold leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
-            data-reveal
-          >
-            {copy.titlePrefix}
-            <span
-              className="text-primary"
-              style={{ textShadow: "0 0 40px hsl(var(--primary) / 0.3)" }}
+          <div className="rounded-3xl bg-[hsl(var(--paper-bg)/0.38)] px-4 py-5 backdrop-blur-[2px] md:px-6 md:py-6">
+            <h1
+              id="hero-heading"
+              className="anchor-target-zero hero-title reveal max-w-[14ch] text-balance text-5xl font-extrabold leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
+              data-reveal
             >
-              {copy.titleAccent}
-            </span>
-            {copy.titleSuffix}
-          </h1>
-          <p
-            className="subhead hero-subhead reveal mt-8 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"
-            style={{ transitionDelay: "120ms" }}
-            data-reveal
-          >
-            {copy.subtitle}
-          </p>
+              {copy.titlePrefix}
+              <span
+                className="text-primary"
+                style={{ textShadow: "0 0 40px hsl(var(--primary) / 0.3)" }}
+              >
+                {copy.titleAccent}
+              </span>
+              {copy.titleSuffix}
+            </h1>
+            <p
+              className="subhead hero-subhead reveal mt-8 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"
+              style={{ transitionDelay: "120ms" }}
+              data-reveal
+            >
+              {copy.subtitle}
+            </p>
 
-          <a
-            href={LINKS.telegramBot}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="interactive-ease reveal hover-lift press-pop cta-shimmer group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
-            aria-label={copy.ctaAria}
-            style={{ transitionDelay: "260ms" }}
-            data-reveal
-          >
-            <Flame
-              className="h-6 w-6 transition-transform group-hover:scale-110"
-              aria-hidden="true"
-            />
-            {copy.cta}
-          </a>
-
+            <a
+              href={LINKS.telegramBot}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="interactive-ease reveal hover-lift press-pop cta-shimmer group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
+              aria-label={copy.ctaAria}
+              style={{ transitionDelay: "260ms" }}
+              data-reveal
+            >
+              <Flame
+                className="h-6 w-6 transition-transform group-hover:scale-110"
+                aria-hidden="true"
+              />
+              {copy.cta}
+            </a>
+          </div>
         </div>
 
         {/* Hero illustration */}
