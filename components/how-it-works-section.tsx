@@ -66,7 +66,7 @@ export function HowItWorksSection() {
         >
 
         {/* Desktop: horizontal steps row */}
-        <div className="hidden md:block" aria-label={copy.stepsLabel}>
+        <div className="hidden md:block">
           <ol className="relative grid grid-cols-4 gap-10">
             {/* Connecting line behind step badges */}
             <div
@@ -105,7 +105,7 @@ export function HowItWorksSection() {
         </div>
 
         {/* Mobile: vertical timeline */}
-        <div className="mt-10 md:hidden" aria-label={copy.stepsLabel}>
+        <div className="mt-10 md:hidden">
           <ol className="relative ml-2 border-l-2 border-border/60 pl-10">
             {steps.map((step, index) => (
               <li key={step.number} className="relative pb-12 last:pb-0">

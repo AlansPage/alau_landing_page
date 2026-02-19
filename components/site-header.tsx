@@ -57,7 +57,7 @@ export function SiteHeader() {
       aria-label="Верхняя панель"
       ref={headerRef}
     >
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-5 lg:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-6 py-3 lg:px-8">
         <a
           href="#main-content"
           className="flex w-fit items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"

@@ -135,7 +135,7 @@ export function FeaturesSection() {
           </a>
           <a
             href={LINKS.knowledgeBase}
-            className="interactive-ease text-base font-semibold text-muted-foreground underline decoration-primary/30 underline-offset-4 transition-colors hover:text-foreground hover:decoration-primary/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            className="interactive-ease inline-flex min-h-[44px] items-center text-base font-semibold text-muted-foreground underline decoration-primary/30 underline-offset-4 transition-colors hover:text-foreground hover:decoration-primary/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             aria-label={copy.ctaSecondaryAria}
           >
             {copy.ctaSecondary}

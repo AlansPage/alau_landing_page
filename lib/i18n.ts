@@ -126,7 +126,7 @@ export const I18N: Record<Language, I18nDict> = {
       langKk: "Казахский язык",
     },
     hero: {
-      titlePrefix: "ALAU: Твой ",
+      titlePrefix: "Твой ",
       titleAccent: "потенциал",
       titleSuffix: " ярче, чем ты думаешь",
       subtitle: "Платформа для обучения и работы, где тебя понимают.",
@@ -324,7 +324,7 @@ export const I18N: Record<Language, I18nDict> = {
     },
     hero: {
       // TODO: verify kk translations with native speaker.
-      titlePrefix: "ALAU: Сенің ",
+      titlePrefix: "Сенің ",
       titleAccent: "әлеуетің",
       titleSuffix: " ойлағаныңнан да жарқын",
       subtitle: "Түсінетін ортада оқу мен жұмыс платформасы.",

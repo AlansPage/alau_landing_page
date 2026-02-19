@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="hero relative overflow-hidden px-6 pb-24 pt-16 md:pb-32 md:pt-20 lg:px-8"
+      className="hero relative overflow-hidden px-6 pb-24 pt-8 md:pb-32 md:pt-12 lg:px-8"
     >
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[1.08fr_0.92fr] md:gap-10 lg:gap-16">
         {/* Text content */}

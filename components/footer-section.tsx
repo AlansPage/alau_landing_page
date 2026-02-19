@@ -41,7 +41,7 @@ export function FooterSection() {
             {/* Accessibility map link */}
             <a
               href={LINKS.knowledgeBase}
-              className="interactive-ease mt-2 inline-flex w-fit text-sm font-semibold text-foreground underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+              className="interactive-ease mt-2 inline-flex min-h-[44px] w-fit items-center text-sm font-semibold text-foreground underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
               {copy.accessibilityMap}
             </a>

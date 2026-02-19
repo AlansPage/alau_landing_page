@@ -9,10 +9,10 @@ import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
 const audienceImages = [
-  { src: "/images/access-vision.cutout.png", alt: "Зрение" },
-  { src: "/images/access-hearing.cutout.png", alt: "Слух" },
-  { src: "/images/access-motor.cutout.png", alt: "Моторика" },
-  { src: "/images/access-cognitive.cutout.png", alt: "Когнитивные функции" },
+  { src: "/images/access-vision.cutout.png", alt: "" },
+  { src: "/images/access-hearing.cutout.png", alt: "" },
+  { src: "/images/access-motor.cutout.png", alt: "" },
+  { src: "/images/access-cognitive.cutout.png", alt: "" },
 ] as const
 
 export function AudienceSection() {
