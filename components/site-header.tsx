@@ -2,8 +2,6 @@
 
 import { useEffect, useRef } from "react"
 
-import Image from "next/image"
-
 import { Logo } from "@/components/logo"
 import { getI18n } from "@/lib/i18n"
 import { SITE } from "@/lib/site-config"
@@ -82,19 +80,6 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-
-        {/* Decorative accessibility badge (non-interactive) */}
-        <div className="pointer-events-none select-none" aria-hidden="true">
-          <div className="relative h-7 w-7 overflow-hidden rounded-md opacity-70">
-            <Image
-              src="/images/accessibility-badge.png"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="28px"
-            />
-          </div>
-        </div>
       </div>
     </header>
   )
