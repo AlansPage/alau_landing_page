@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import { ZoomIn, Menu } from "lucide-react"
 
 import { getI18n } from "@/lib/i18n"
@@ -64,6 +65,17 @@ export function FloatingControls() {
       >
         <ZoomIn className="h-5 w-5" aria-hidden="true" />
       </button>
+      <div className="pointer-events-none select-none" aria-hidden="true">
+        <div className="relative h-[40px] w-[40px] overflow-hidden rounded-lg opacity-80">
+          <Image
+            src="/images/accessibility-badge.png"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="40px"
+          />
+        </div>
+      </div>
       <button
         type="button"
         onClick={handleMenuToggle}
