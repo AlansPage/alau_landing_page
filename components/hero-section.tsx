@@ -19,7 +19,7 @@ export function HeroSection() {
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[1.08fr_0.92fr] md:gap-10 lg:gap-16">
         {/* Text content */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <div className="rounded-3xl bg-[hsl(var(--paper-bg)/0.38)] px-4 py-5 backdrop-blur-[2px] md:px-6 md:py-6">
+          <div className="rounded-3xl px-4 py-5 md:px-6 md:py-6">
             <h1
               id="hero-heading"
               className="anchor-target-zero hero-title reveal max-w-[14ch] text-balance text-5xl font-extrabold leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
