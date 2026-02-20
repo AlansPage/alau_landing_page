@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="56" fill="url(#fl-bg)" opacity="0.12"/>
+  <rect x="24" y="28" width="72" height="52" rx="6" stroke="url(#fl-grad)" stroke-width="3.5" fill="none"/>
+  <rect x="30" y="34" width="60" height="40" rx="3" fill="url(#fl-grad)" opacity="0.12"/>
+  <polygon points="52,44 52,64 68,54" fill="url(#fl-grad)"/>
+  <line x1="44" y1="86" x2="76" y2="86" stroke="url(#fl-grad)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="60" y1="80" x2="60" y2="86" stroke="url(#fl-grad)" stroke-width="3" stroke-linecap="round"/>
+  <rect x="28" y="92" width="24" height="3" rx="1.5" fill="hsl(280 60% 65%)" opacity="0.3"/>
+  <rect x="56" y="92" width="16" height="3" rx="1.5" fill="hsl(280 60% 65%)" opacity="0.3"/>
+  <rect x="76" y="92" width="20" height="3" rx="1.5" fill="hsl(280 60% 65%)" opacity="0.2"/>
+  <defs>
+    <linearGradient id="fl-grad" x1="24" y1="28" x2="96" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="hsl(280 60% 65%)"/>
+      <stop offset="1" stop-color="hsl(260 70% 55%)"/>
+    </linearGradient>
+    <radialGradient id="fl-bg" cx="60" cy="60" r="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="hsl(280 60% 65%)" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="hsl(280 60% 65%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

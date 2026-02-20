@@ -80,6 +80,7 @@ type I18nDict = {
     message: string
     submit: string
     success: string
+    errors: { required: string; invalidEmail: string }
   }
   faq: {
     title: string

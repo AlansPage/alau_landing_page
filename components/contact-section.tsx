@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Send, CheckCircle2 } from "lucide-react"
 
 import { getI18n } from "@/lib/i18n"
@@ -49,9 +49,49 @@ export function ContactSection() {
   const { lang } = useLanguage()
   const copy = getI18n(lang).contact
   const [submitted, setSubmitted] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    const form = formRef.current
+    if (!form) return
+
+    const data = new FormData(form)
+    const newErrors: Record<string, string> = {}
+
+    // Check required fields
+    if (!data.get("firstName")?.toString().trim()) {
+      newErrors.firstName = copy.errors.required
+    }
+    if (!data.get("lastName")?.toString().trim()) {
+      newErrors.lastName = copy.errors.required
+    }
+    if (!data.get("email")?.toString().trim()) {
+      newErrors.email = copy.errors.required
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.get("email")!.toString().trim())) {
+      newErrors.email = copy.errors.invalidEmail
+    }
+    if (!data.get("message")?.toString().trim()) {
+      newErrors.message = copy.errors.required
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      // Focus the first invalid input
+      const firstErrorKey = Object.keys(newErrors)[0]
+      const fieldMap: Record<string, string> = {
+        firstName: "contact-first-name",
+        lastName: "contact-last-name",
+        email: "contact-email",
+        message: "contact-message",
+      }
+      const el = form.querySelector<HTMLElement>(`#${fieldMap[firstErrorKey]}`)
+      el?.focus()
+      return
+    }
+
     setSubmitted(true)
   }
 
@@ -124,7 +164,7 @@ export function ContactSection() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate>
+                <form ref={formRef} onSubmit={handleSubmit} noValidate>
                   <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <div className="flex flex-col gap-2">
                       <label
@@ -135,12 +175,17 @@ export function ContactSection() {
                       </label>
                       <input
                         id="contact-first-name"
+                        name="firstName"
                         type="text"
                         autoComplete="given-name"
                         aria-required="true"
                         required
-                        className={inputClass}
+                        aria-invalid={!!errors.firstName}
+                        aria-describedby={errors.firstName ? "error-firstName" : undefined}
+                        onChange={() => setErrors(prev => { const next = { ...prev }; delete next.firstName; return next; })}
+                        className={`${inputClass}${errors.firstName ? " border-red-500" : ""}`}
                       />
+                      {errors.firstName && <p id="error-firstName" role="alert" className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label
@@ -151,12 +196,17 @@ export function ContactSection() {
                       </label>
                       <input
                         id="contact-last-name"
+                        name="lastName"
                         type="text"
                         autoComplete="family-name"
                         aria-required="true"
                         required
-                        className={inputClass}
+                        aria-invalid={!!errors.lastName}
+                        aria-describedby={errors.lastName ? "error-lastName" : undefined}
+                        onChange={() => setErrors(prev => { const next = { ...prev }; delete next.lastName; return next; })}
+                        className={`${inputClass}${errors.lastName ? " border-red-500" : ""}`}
                       />
+                      {errors.lastName && <p id="error-lastName" role="alert" className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label
@@ -167,6 +217,7 @@ export function ContactSection() {
                       </label>
                       <input
                         id="contact-company"
+                        name="company"
                         type="text"
                         autoComplete="organization"
                         className={inputClass}
@@ -181,12 +232,17 @@ export function ContactSection() {
                       </label>
                       <input
                         id="contact-email"
+                        name="email"
                         type="email"
                         autoComplete="email"
                         aria-required="true"
                         required
-                        className={inputClass}
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? "error-email" : undefined}
+                        onChange={() => setErrors(prev => { const next = { ...prev }; delete next.email; return next; })}
+                        className={`${inputClass}${errors.email ? " border-red-500" : ""}`}
                       />
+                      {errors.email && <p id="error-email" role="alert" className="mt-1 text-sm text-red-600">{errors.email}</p>}
                     </div>
                     <div className="flex flex-col gap-2 sm:col-span-2">
                       <label
@@ -197,6 +253,7 @@ export function ContactSection() {
                       </label>
                       <input
                         id="contact-phone"
+                        name="phone"
                         type="tel"
                         autoComplete="tel"
                         className={inputClass}
@@ -213,11 +270,16 @@ export function ContactSection() {
                     </label>
                     <textarea
                       id="contact-message"
+                      name="message"
                       rows={4}
                       aria-required="true"
                       required
-                      className={`min-h-[120px] ${inputClass}`}
+                      aria-invalid={!!errors.message}
+                      aria-describedby={errors.message ? "error-message" : undefined}
+                      onChange={() => setErrors(prev => { const next = { ...prev }; delete next.message; return next; })}
+                      className={`min-h-[120px] ${inputClass}${errors.message ? " border-red-500" : ""}`}
                     />
+                    {errors.message && <p id="error-message" role="alert" className="mt-1 text-sm text-red-600">{errors.message}</p>}
                   </div>
 
                   <div className="mt-8">

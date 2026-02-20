@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="56" fill="url(#fv-bg)" opacity="0.12"/>
+  <rect x="50" y="24" width="20" height="40" rx="10" fill="url(#fv-grad)"/>
+  <path d="M38 56a22 22 0 0 0 44 0" stroke="url(#fv-grad)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <line x1="60" y1="78" x2="60" y2="92" stroke="url(#fv-grad)" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="48" y1="92" x2="72" y2="92" stroke="url(#fv-grad)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M82 36c4 4 6.5 9.5 6.5 16s-2.5 12-6.5 16" stroke="hsl(212 100% 55%)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M90 28c6 7 10 16 10 24s-4 17-10 24" stroke="hsl(212 100% 55%)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.3"/>
+  <defs>
+    <linearGradient id="fv-grad" x1="40" y1="20" x2="80" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="hsl(212 100% 55%)"/>
+      <stop offset="1" stop-color="hsl(220 90% 45%)"/>
+    </linearGradient>
+    <radialGradient id="fv-bg" cx="60" cy="60" r="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="hsl(212 100% 55%)" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="hsl(212 100% 55%)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

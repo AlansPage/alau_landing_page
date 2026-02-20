@@ -1,6 +1,7 @@
 "use client"
 
-import { Flame, Mic, SunMedium, MonitorPlay, ClipboardCheck } from "lucide-react"
+import Image from "next/image"
+import { Flame } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
 import { getI18n } from "@/lib/i18n"
@@ -9,7 +10,12 @@ import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
-const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
+const featureImages = [
+  "/images/feature-voice.svg",
+  "/images/feature-contrast.svg",
+  "/images/feature-learning.svg",
+  "/images/feature-readiness.svg",
+] as const
 
 /* Separator sparkle between feature rows */
 const separatorColors = ["hsl(280 60% 65%)", "hsl(35 90% 60%)", "hsl(340 70% 65%)"]
@@ -65,7 +71,7 @@ export function FeaturesSection() {
 
         <div className="mt-16 flex flex-col">
           {copy.items.map((item, idx) => {
-            const Icon = featureIcons[idx]
+            const imageSrc = featureImages[idx]
             const reversed = idx % 2 !== 0
             return (
               <div key={idx}>
@@ -101,14 +107,17 @@ export function FeaturesSection() {
                     </p>
                   </div>
 
-                  {/* Visual side — platform feature icon */}
+                  {/* Visual side — feature illustration */}
                   <div className="flex flex-1 items-center justify-center">
-                    <div
-                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/30 bg-[hsl(var(--surface)/0.45)] md:h-52 md:w-52"
-                    >
-                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.12)] to-[hsl(var(--flame-hot)/0.12)] md:h-24 md:w-24">
-                        <Icon className="h-10 w-10 text-primary md:h-11 md:w-11" aria-hidden="true" />
-                      </div>
+                    <div className="relative h-32 w-32 overflow-hidden rounded-2xl md:h-44 md:w-44">
+                      <Image
+                        src={imageSrc}
+                        alt=""
+                        fill
+                        className="object-contain mix-blend-multiply [filter:contrast(1.05)_brightness(1.02)]"
+                        sizes="(min-width: 768px) 176px, 128px"
+                        aria-hidden="true"
+                      />
                     </div>
                   </div>
                 </div>
@@ -127,7 +136,7 @@ export function FeaturesSection() {
             href={LINKS.telegramBot}
             target="_blank"
             rel="noopener noreferrer"
-            className="interactive-ease hover-lift press-pop cta-shimmer inline-flex min-h-[60px] items-center gap-3 rounded-2xl bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:px-12 md:py-4 md:text-lg md:min-h-[64px] md:text-xl"
+            className="interactive-ease hover-lift press-pop cta-shimmer inline-flex min-h-[60px] items-center gap-3 rounded-2xl bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:px-12 md:py-4 md:min-h-[64px] md:text-xl"
             aria-label={copy.ctaPrimaryAria}
           >
             <Flame className="h-6 w-6" aria-hidden="true" />

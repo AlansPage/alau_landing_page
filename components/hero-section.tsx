@@ -46,7 +46,7 @@ export function HeroSection() {
               href={LINKS.telegramBot}
               target="_blank"
               rel="noopener noreferrer"
-              className="interactive-ease reveal hover-lift press-pop cta-shimmer group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:px-10 md:py-4 md:text-lg md:min-h-[64px] md:text-xl"
+              className="interactive-ease reveal hover-lift press-pop cta-shimmer group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:px-10 md:py-4 md:min-h-[64px] md:text-xl"
               aria-label={copy.ctaAria}
               style={{ transitionDelay: "260ms" }}
               data-reveal
