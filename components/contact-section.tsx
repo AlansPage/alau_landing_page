@@ -116,7 +116,7 @@ export function ContactSection() {
               <div className="relative inline-block">
                 <h2
                   id="contact"
-                  className="anchor-target reveal text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl"
+                  className="anchor-target reveal text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
                   data-reveal
                 >
                   {copy.title}

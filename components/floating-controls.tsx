@@ -7,6 +7,7 @@ import { ZoomIn, Menu } from "lucide-react"
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
 import { useMagnifier } from "@/components/magnifier-provider"
+import { useMobileNav } from "@/components/mobile-nav-provider"
 
 const BTN_CLASS =
   "interactive-ease flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-[48px] md:min-w-[48px]"
@@ -19,16 +20,13 @@ export function FloatingControls() {
     toggle: toggleMagnifier,
     setToggleButtonEl,
   } = useMagnifier()
+  const { menuOpen, toggleMenu } = useMobileNav()
   const copy = getI18n(lang)
 
   useEffect(() => {
     setToggleButtonEl(magnifierButtonRef.current)
     return () => setToggleButtonEl(null)
   }, [setToggleButtonEl])
-
-  const handleMenuToggle = () => {
-    window.dispatchEvent(new CustomEvent("toggle-mobile-nav"))
-  }
 
   return (
     <div
@@ -78,9 +76,10 @@ export function FloatingControls() {
       </div>
       <button
         type="button"
-        onClick={handleMenuToggle}
+        onClick={toggleMenu}
         className={`${BTN_CLASS} md:hidden`}
-        aria-label={copy.header.menuOpen}
+        aria-label={menuOpen ? copy.header.menuClose : copy.header.menuOpen}
+        aria-expanded={menuOpen}
         aria-controls="main-nav"
       >
         <Menu className="h-5 w-5" aria-hidden="true" />
