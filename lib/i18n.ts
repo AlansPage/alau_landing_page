@@ -250,6 +250,7 @@ export const I18N: Record<Language, I18nDict> = {
       message: "Опишите ваши потребности",
       submit: "Отправить заявку",
       success: "Спасибо! Мы свяжемся с вами в ближайшее время.",
+      errors: { required: "Обязательное поле", invalidEmail: "Введите корректный email" },
     },
     faq: {
       title: "Частые вопросы",
@@ -448,6 +449,7 @@ export const I18N: Record<Language, I18nDict> = {
       message: "Қажеттіліктеріңізді сипаттаңыз",
       submit: "Өтінім жіберу",
       success: "Рахмет! Жақын арада сізбен хабарласамыз.",
+      errors: { required: "Міндетті өріс", invalidEmail: "Дұрыс email енгізіңіз" },
     },
     faq: {
       title: "Жиі қойылатын сұрақтар",
