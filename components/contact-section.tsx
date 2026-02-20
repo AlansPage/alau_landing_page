@@ -43,7 +43,7 @@ function ContactSpark() {
 }
 
 const inputClass =
-  "min-h-[48px] rounded-xl border border-border bg-card px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/60 transition-[border-color,box-shadow] focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+  "min-h-[48px] rounded-xl border border-border bg-card px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/75 transition-[border-color,box-shadow] focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
 
 export function ContactSection() {
   const { lang } = useLanguage()
@@ -185,7 +185,7 @@ export function ContactSection() {
                         onChange={() => setErrors(prev => { const next = { ...prev }; delete next.firstName; return next; })}
                         className={`${inputClass}${errors.firstName ? " border-red-500" : ""}`}
                       />
-                      {errors.firstName && <p id="error-firstName" role="alert" className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
+                      {errors.firstName && <p id="error-firstName" role="alert" className="mt-1 text-sm text-red-700">{errors.firstName}</p>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label
@@ -206,7 +206,7 @@ export function ContactSection() {
                         onChange={() => setErrors(prev => { const next = { ...prev }; delete next.lastName; return next; })}
                         className={`${inputClass}${errors.lastName ? " border-red-500" : ""}`}
                       />
-                      {errors.lastName && <p id="error-lastName" role="alert" className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
+                      {errors.lastName && <p id="error-lastName" role="alert" className="mt-1 text-sm text-red-700">{errors.lastName}</p>}
                     </div>
                     <div className="flex flex-col gap-2">
                       <label
@@ -242,7 +242,7 @@ export function ContactSection() {
                         onChange={() => setErrors(prev => { const next = { ...prev }; delete next.email; return next; })}
                         className={`${inputClass}${errors.email ? " border-red-500" : ""}`}
                       />
-                      {errors.email && <p id="error-email" role="alert" className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                      {errors.email && <p id="error-email" role="alert" className="mt-1 text-sm text-red-700">{errors.email}</p>}
                     </div>
                     <div className="flex flex-col gap-2 sm:col-span-2">
                       <label
@@ -279,7 +279,7 @@ export function ContactSection() {
                       onChange={() => setErrors(prev => { const next = { ...prev }; delete next.message; return next; })}
                       className={`min-h-[120px] ${inputClass}${errors.message ? " border-red-500" : ""}`}
                     />
-                    {errors.message && <p id="error-message" role="alert" className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                    {errors.message && <p id="error-message" role="alert" className="mt-1 text-sm text-red-700">{errors.message}</p>}
                   </div>
 
                   <div className="mt-8">

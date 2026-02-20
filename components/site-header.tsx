@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { X } from "lucide-react"
 
 import { Logo } from "@/components/logo"
@@ -9,8 +9,18 @@ import { SITE } from "@/lib/site-config"
 import { useLanguage } from "@/components/language-provider"
 import { useMobileNav } from "@/components/mobile-nav-provider"
 
-const NAV_LINK_CLASS =
-  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-[15px] font-medium tracking-[0.01em] text-foreground/85 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[18px] md:font-semibold"
+const NAV_LINK_BASE =
+  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-[15px] font-medium tracking-[0.01em] transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[18px] md:font-semibold"
+
+const SECTION_IDS = [
+  "hero",
+  "audience",
+  "how-it-works",
+  "features",
+  "testimonials",
+  "contact",
+  "faq",
+]
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null)
@@ -18,7 +28,9 @@ export function SiteHeader() {
   const { lang } = useLanguage()
   const copy = getI18n(lang)
   const { menuOpen, closeMenu } = useMobileNav()
+  const [activeSection, setActiveSection] = useState("hero")
 
+  /* Measure header height */
   useEffect(() => {
     const header = headerRef.current
     if (!header) return
@@ -41,6 +53,30 @@ export function SiteHeader() {
     return () => {
       observer.disconnect()
     }
+  }, [])
+
+  /* Scroll spy — track which section is in view */
+  useEffect(() => {
+    const elements = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+      Boolean
+    ) as HTMLElement[]
+
+    if (elements.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        }
+      },
+      { rootMargin: "-40% 0px -40% 0px" }
+    )
+
+    elements.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
   }, [])
 
   /* Focus trap when mobile menu is open */
@@ -146,16 +182,20 @@ export function SiteHeader() {
               aria-label="Разделы"
               className="flex flex-col items-center justify-center gap-y-2"
             >
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={NAV_LINK_CLASS}
-                  onClick={handleNavLinkClick}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.slice(1)
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`${NAV_LINK_BASE} ${isActive ? "text-foreground border-b-2 border-primary" : "text-foreground/90"}`}
+                    aria-current={isActive ? "true" : undefined}
+                    onClick={handleNavLinkClick}
+                  >
+                    {link.label}
+                  </a>
+                )
+              })}
             </nav>
           </div>
         )}
@@ -164,18 +204,22 @@ export function SiteHeader() {
         <nav
           id={menuOpen ? undefined : "main-nav"}
           aria-label="Разделы"
-          className={`${menuOpen ? "hidden md:flex" : "hidden md:flex"} flex-wrap items-center justify-center gap-x-2 gap-y-0 md:gap-x-5 md:gap-y-1`}
+          className="hidden md:flex flex-wrap items-center justify-center gap-x-2 gap-y-0 md:gap-x-5 md:gap-y-1"
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={NAV_LINK_CLASS}
-              onClick={handleNavLinkClick}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.slice(1)
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`${NAV_LINK_BASE} ${isActive ? "text-foreground border-b-2 border-primary" : "text-foreground/90"}`}
+                aria-current={isActive ? "true" : undefined}
+                onClick={handleNavLinkClick}
+              >
+                {link.label}
+              </a>
+            )
+          })}
         </nav>
       </div>
     </header>

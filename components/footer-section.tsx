@@ -48,7 +48,7 @@ export function FooterSection() {
           </div>
 
           {/* Sponsors */}
-          <div className="flex flex-col gap-4" aria-label={copy.partnersTitle}>
+          <section className="flex flex-col gap-4" aria-label={copy.partnersTitle}>
             <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
               {copy.partnersTitle}
             </h2>
@@ -68,7 +68,7 @@ export function FooterSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Contacts / social links */}
           <div className="flex flex-col gap-5">

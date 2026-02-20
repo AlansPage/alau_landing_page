@@ -24,7 +24,6 @@ export default function Page() {
       <RevealInitializer />
 
       <main id="main-content" className="pt-[var(--header-h)]">
-        <FloatingControls />
         <HeroSection />
         <AudienceSection />
         <HowItWorksSection />
@@ -34,6 +33,7 @@ export default function Page() {
         <FaqSection />
       </main>
 
+      <FloatingControls />
       <FooterSection />
     </>
   )
