@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Flame, Mic, SunMedium, MonitorPlay, ClipboardCheck } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
@@ -10,6 +11,13 @@ import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
 const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
+
+const featureImages = [
+  { src: "/images/access-vision.cutout.png", alt: "" },
+  { src: "/images/access-cognitive.cutout.png", alt: "" },
+  { src: "/images/access-hearing.cutout.png", alt: "" },
+  { src: "/images/access-motor.cutout.png", alt: "" },
+] as const
 
 /* Separator sparkle between feature rows */
 const separatorColors = ["hsl(280 60% 65%)", "hsl(35 90% 60%)", "hsl(340 70% 65%)"]
@@ -101,14 +109,16 @@ export function FeaturesSection() {
                     </p>
                   </div>
 
-                  {/* Visual side — platform feature icon */}
+                  {/* Visual side — feature image */}
                   <div className="flex flex-1 items-center justify-center">
-                    <div
-                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/30 bg-[hsl(var(--surface)/0.45)] md:h-52 md:w-52"
-                    >
-                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.12)] to-[hsl(var(--flame-hot)/0.12)] md:h-24 md:w-24">
-                        <Icon className="h-10 w-10 text-primary md:h-11 md:w-11" aria-hidden="true" />
-                      </div>
+                    <div className="relative h-48 w-48 md:h-56 md:w-56">
+                      <Image
+                        src={featureImages[idx].src}
+                        alt={featureImages[idx].alt}
+                        fill
+                        className="object-contain opacity-95"
+                        sizes="(min-width: 768px) 224px, 192px"
+                      />
                     </div>
                   </div>
                 </div>
