@@ -1,6 +1,7 @@
 "use client"
 
-import { Flame, Mic, SunMedium, MonitorPlay, ClipboardCheck } from "lucide-react"
+import Image from "next/image"
+import { Flame } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
 import { getI18n } from "@/lib/i18n"
@@ -9,7 +10,12 @@ import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
-const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
+const featureImages = [
+  "/images/icon1.png",
+  "/images/icon2.png",
+  "/images/icon3.png",
+  "/images/icon4.png",
+] as const
 
 /* Separator sparkle between feature rows */
 const separatorColors = ["hsl(280 60% 65%)", "hsl(35 90% 60%)", "hsl(340 70% 65%)"]
@@ -21,7 +27,7 @@ export function FeaturesSection() {
   return (
     <section
       aria-labelledby="features"
-      className="relative px-6 py-24 md:py-32 lg:px-8"
+      className="relative px-6 py-12 md:py-16 lg:px-8 lg:py-20"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/4 top-20 h-72 w-72 rounded-full bg-primary/8 blur-[140px]" />
@@ -51,7 +57,7 @@ export function FeaturesSection() {
         <div className="relative inline-block">
           <h2
             id="features"
-            className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="anchor-target reveal text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
             data-reveal
           >
             {copy.title}
@@ -65,7 +71,6 @@ export function FeaturesSection() {
 
         <div className="mt-16 flex flex-col">
           {copy.items.map((item, idx) => {
-            const Icon = featureIcons[idx]
             const reversed = idx % 2 !== 0
             return (
               <div key={idx}>
@@ -104,10 +109,16 @@ export function FeaturesSection() {
                   {/* Visual side — platform feature icon */}
                   <div className="flex flex-1 items-center justify-center">
                     <div
-                      className="flex h-44 w-44 items-center justify-center rounded-2xl border border-border/30 bg-[hsl(var(--surface)/0.45)] md:h-52 md:w-52"
+                      className="flex h-40 w-40 items-center justify-center rounded-2xl border border-border/20 bg-[hsl(var(--paper-bg)/0.72)] shadow-[inset_0_1px_0_hsl(var(--background)/0.8)] md:h-52 md:w-52"
                     >
-                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.12)] to-[hsl(var(--flame-hot)/0.12)] md:h-24 md:w-24">
-                        <Icon className="h-10 w-10 text-primary md:h-11 md:w-11" aria-hidden="true" />
+                      <div className="relative h-28 w-28 overflow-hidden rounded-2xl ring-1 ring-border/15 md:h-40 md:w-40">
+                        <Image
+                          src={featureImages[idx]}
+                          alt=""
+                          fill
+                          className="object-cover object-center mix-blend-multiply"
+                          sizes="(min-width: 768px) 160px, 112px"
+                        />
                       </div>
                     </div>
                   </div>
@@ -127,7 +138,7 @@ export function FeaturesSection() {
             href={LINKS.telegramBot}
             target="_blank"
             rel="noopener noreferrer"
-            className="interactive-ease hover-lift press-pop cta-shimmer inline-flex min-h-[60px] items-center gap-3 rounded-2xl bg-primary px-12 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
+            className="interactive-ease hover-lift press-pop cta-shimmer inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:px-10 md:py-4 md:text-lg"
             aria-label={copy.ctaPrimaryAria}
           >
             <Flame className="h-6 w-6" aria-hidden="true" />

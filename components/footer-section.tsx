@@ -20,7 +20,7 @@ export function FooterSection() {
 
   return (
     <footer
-      className="px-6 py-20 md:py-28 lg:px-8"
+      className="px-6 py-14 md:py-20 lg:px-8"
       role="contentinfo"
     >
       {/* Gradient separator line */}
@@ -35,7 +35,7 @@ export function FooterSection() {
             <div className="flex items-center gap-3">
               <Logo variant="wordmark" className="h-9 w-auto" alt="ALAU" />
             </div>
-            <p className="max-w-xs text-pretty text-sm leading-relaxed text-muted-foreground">
+            <p className="max-w-xs text-pretty text-base leading-relaxed text-muted-foreground">
               {copy.description}
             </p>
             {/* Accessibility map link */}

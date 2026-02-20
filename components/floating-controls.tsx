@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ZoomIn, Menu } from "lucide-react"
 
 import { getI18n } from "@/lib/i18n"
@@ -9,10 +9,11 @@ import { useLanguage } from "@/components/language-provider"
 import { useMagnifier } from "@/components/magnifier-provider"
 
 const BTN_CLASS =
-  "interactive-ease flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+  "interactive-ease flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-[48px] md:min-w-[48px]"
 
 export function FloatingControls() {
   const magnifierButtonRef = useRef<HTMLButtonElement | null>(null)
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null)
   const { lang, setLang } = useLanguage()
   const {
     enabled: magnifierEnabled,
@@ -20,19 +21,32 @@ export function FloatingControls() {
     setToggleButtonEl,
   } = useMagnifier()
   const copy = getI18n(lang)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     setToggleButtonEl(magnifierButtonRef.current)
     return () => setToggleButtonEl(null)
   }, [setToggleButtonEl])
 
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const custom = event as CustomEvent<{ open: boolean }>
+      setMenuOpen(Boolean(custom.detail?.open))
+    }
+    window.addEventListener("mobile-nav-state", handler as EventListener)
+    return () => window.removeEventListener("mobile-nav-state", handler as EventListener)
+  }, [])
+
   const handleMenuToggle = () => {
-    window.dispatchEvent(new CustomEvent("toggle-mobile-nav"))
+    if (menuButtonRef.current) {
+      menuButtonRef.current.id = "floating-menu-toggle"
+    }
+    window.dispatchEvent(new CustomEvent("toggle-mobile-nav", { detail: { triggerId: "floating-menu-toggle" } }))
   }
 
   return (
     <div
-      className="fixed right-3 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-2 rounded-2xl border border-border/40 bg-card/90 p-2 shadow-lg backdrop-blur-sm md:right-6"
+      className="fixed right-3 top-1/2 z-50 flex -translate-y-1/2 scale-90 flex-col items-center gap-2 rounded-2xl border border-border/40 bg-card/90 p-1.5 shadow-lg backdrop-blur-sm md:right-6 md:scale-100 md:p-2"
       aria-label="Панель управления"
       role="toolbar"
     >
@@ -77,11 +91,13 @@ export function FloatingControls() {
         </div>
       </div>
       <button
+        ref={menuButtonRef}
         type="button"
         onClick={handleMenuToggle}
         className={`${BTN_CLASS} md:hidden`}
-        aria-label={copy.header.menuOpen}
+        aria-label={menuOpen ? copy.header.menuClose : copy.header.menuOpen}
         aria-controls="main-nav"
+        aria-expanded={menuOpen}
       >
         <Menu className="h-5 w-5" aria-hidden="true" />
       </button>

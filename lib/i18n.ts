@@ -80,6 +80,13 @@ type I18nDict = {
     message: string
     submit: string
     success: string
+    errors: {
+      firstNameRequired: string
+      lastNameRequired: string
+      emailRequired: string
+      emailInvalid: string
+      messageRequired: string
+    }
   }
   faq: {
     title: string
@@ -249,6 +256,13 @@ export const I18N: Record<Language, I18nDict> = {
       message: "Опишите ваши потребности",
       submit: "Отправить заявку",
       success: "Спасибо! Мы свяжемся с вами в ближайшее время.",
+      errors: {
+        firstNameRequired: "Введите имя.",
+        lastNameRequired: "Введите фамилию.",
+        emailRequired: "Введите email.",
+        emailInvalid: "Введите корректный email.",
+        messageRequired: "Опишите ваши потребности.",
+      },
     },
     faq: {
       title: "Частые вопросы",
@@ -447,6 +461,13 @@ export const I18N: Record<Language, I18nDict> = {
       message: "Қажеттіліктеріңізді сипаттаңыз",
       submit: "Өтінім жіберу",
       success: "Рахмет! Жақын арада сізбен хабарласамыз.",
+      errors: {
+        firstNameRequired: "Атыңызды енгізіңіз.",
+        lastNameRequired: "Тегіңізді енгізіңіз.",
+        emailRequired: "Email енгізіңіз.",
+        emailInvalid: "Дұрыс email енгізіңіз.",
+        messageRequired: "Қажеттіліктеріңізді сипаттаңыз.",
+      },
     },
     faq: {
       title: "Жиі қойылатын сұрақтар",
