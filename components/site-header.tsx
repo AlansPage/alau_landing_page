@@ -8,7 +8,7 @@ import { SITE } from "@/lib/site-config"
 import { useLanguage } from "@/components/language-provider"
 
 const NAV_LINK_CLASS =
-  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-[18px] font-semibold tracking-[0.01em] text-foreground/85 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+  "interactive-ease inline-flex min-h-[44px] items-center rounded-lg px-3 py-2 text-[15px] font-medium tracking-[0.01em] text-foreground/85 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:text-[18px] md:font-semibold"
 
 export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null)
@@ -68,7 +68,7 @@ export function SiteHeader() {
         <nav
           id="main-nav"
           aria-label="Разделы"
-          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 md:gap-x-5"
+          className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0 md:gap-x-5 md:gap-y-1"
         >
           {navLinks.map((link) => (
             <a

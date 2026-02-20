@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="hero relative overflow-hidden px-6 pb-24 pt-16 md:pb-32 md:pt-20 lg:px-8"
+      className="hero relative overflow-hidden px-6 pb-16 pt-16 md:pb-24 md:pt-20 lg:pb-32 lg:px-8"
     >
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[1.08fr_0.92fr] md:gap-10 lg:gap-16">
         {/* Text content */}
@@ -22,7 +22,7 @@ export function HeroSection() {
           <div className="rounded-3xl bg-[hsl(var(--paper-bg)/0.38)] px-4 py-5 backdrop-blur-[2px] md:px-6 md:py-6">
             <h1
               id="hero-heading"
-              className="anchor-target-zero hero-title reveal max-w-[14ch] text-balance text-5xl font-extrabold leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
+              className="anchor-target-zero hero-title reveal max-w-[14ch] text-balance text-4xl font-extrabold leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
               data-reveal
             >
               {copy.titlePrefix}
@@ -46,7 +46,7 @@ export function HeroSection() {
               href={LINKS.telegramBot}
               target="_blank"
               rel="noopener noreferrer"
-              className="interactive-ease reveal hover-lift press-pop cta-shimmer group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
+              className="interactive-ease reveal hover-lift press-pop cta-shimmer group mt-10 inline-flex min-h-[56px] items-center gap-3 rounded-2xl bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:px-10 md:py-4 md:text-lg md:min-h-[64px] md:text-xl"
               aria-label={copy.ctaAria}
               style={{ transitionDelay: "260ms" }}
               data-reveal

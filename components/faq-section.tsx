@@ -15,7 +15,7 @@ export function FaqSection() {
   return (
     <section
       aria-labelledby="faq"
-      className="relative px-6 py-24 md:py-32 lg:px-8"
+      className="relative px-6 py-16 md:py-24 lg:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-10 top-20 h-48 w-48 rounded-full bg-accent/6 blur-[110px]" />
@@ -41,7 +41,7 @@ export function FaqSection() {
         <div className="relative inline-block w-full">
           <h2
             id="faq"
-            className="anchor-target reveal text-balance text-center text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="anchor-target reveal text-balance text-center text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
             data-reveal
           >
             {copy.title}

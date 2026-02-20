@@ -58,7 +58,7 @@ export function ContactSection() {
   return (
     <section
       aria-labelledby="contact"
-      className="relative px-6 py-24 md:py-32 lg:px-8"
+      className="relative px-6 py-16 md:py-24 lg:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/2 top-16 h-60 w-[400px] -translate-x-1/2 rounded-full bg-primary/8 blur-[130px]" />
@@ -76,7 +76,7 @@ export function ContactSection() {
               <div className="relative inline-block">
                 <h2
                   id="contact"
-                  className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+                  className="anchor-target reveal text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl"
                   data-reveal
                 >
                   {copy.title}
@@ -119,7 +119,7 @@ export function ContactSection() {
                   role="status"
                 >
                   <CheckCircle2 className="h-12 w-12 text-primary" aria-hidden="true" />
-                  <p className="text-center text-lg font-semibold text-foreground">
+                  <p className="text-center text-base font-semibold text-foreground md:text-lg">
                     {copy.success}
                   </p>
                 </div>
@@ -223,7 +223,7 @@ export function ContactSection() {
                   <div className="mt-8">
                     <button
                       type="submit"
-                      className="interactive-ease hover-lift press-pop inline-flex min-h-[56px] w-full items-center justify-center gap-3 rounded-2xl bg-accent px-10 py-4 text-lg font-bold text-accent-foreground shadow-lg shadow-accent/20 transition-all hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:w-auto"
+                      className="interactive-ease hover-lift press-pop inline-flex min-h-[56px] w-full items-center justify-center gap-3 rounded-2xl bg-accent px-8 py-3 text-base font-bold text-accent-foreground shadow-lg shadow-accent/20 transition-all hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:w-auto md:px-10 md:py-4 md:text-lg"
                     >
                       <Send className="h-5 w-5" aria-hidden="true" />
                       {copy.submit}

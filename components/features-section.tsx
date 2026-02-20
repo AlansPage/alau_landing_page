@@ -21,7 +21,7 @@ export function FeaturesSection() {
   return (
     <section
       aria-labelledby="features"
-      className="relative px-6 py-24 md:py-32 lg:px-8"
+      className="relative px-6 py-16 md:py-24 lg:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/4 top-20 h-72 w-72 rounded-full bg-primary/8 blur-[140px]" />
@@ -51,7 +51,7 @@ export function FeaturesSection() {
         <div className="relative inline-block">
           <h2
             id="features"
-            className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="anchor-target reveal text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
             data-reveal
           >
             {copy.title}
@@ -127,7 +127,7 @@ export function FeaturesSection() {
             href={LINKS.telegramBot}
             target="_blank"
             rel="noopener noreferrer"
-            className="interactive-ease hover-lift press-pop cta-shimmer inline-flex min-h-[60px] items-center gap-3 rounded-2xl bg-primary px-12 py-4 text-lg font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:min-h-[64px] md:text-xl"
+            className="interactive-ease hover-lift press-pop cta-shimmer inline-flex min-h-[60px] items-center gap-3 rounded-2xl bg-primary px-8 py-3 text-base font-bold text-primary-foreground shadow-[0_0_40px_hsl(212_100%_55%/0.25)] transition-all hover:shadow-[0_0_70px_hsl(212_100%_55%/0.4)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:px-12 md:py-4 md:text-lg md:min-h-[64px] md:text-xl"
             aria-label={copy.ctaPrimaryAria}
           >
             <Flame className="h-6 w-6" aria-hidden="true" />

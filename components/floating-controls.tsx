@@ -9,7 +9,7 @@ import { useLanguage } from "@/components/language-provider"
 import { useMagnifier } from "@/components/magnifier-provider"
 
 const BTN_CLASS =
-  "interactive-ease flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+  "interactive-ease flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:min-h-[48px] md:min-w-[48px]"
 
 export function FloatingControls() {
   const magnifierButtonRef = useRef<HTMLButtonElement | null>(null)
@@ -32,7 +32,7 @@ export function FloatingControls() {
 
   return (
     <div
-      className="fixed right-3 top-1/2 z-50 flex -translate-y-1/2 flex-col items-center gap-2 rounded-2xl border border-border/40 bg-card/90 p-2 shadow-lg backdrop-blur-sm md:right-6"
+      className="fixed right-3 top-1/2 z-50 flex origin-right -translate-y-1/2 scale-90 flex-col items-center gap-2 rounded-2xl border border-border/40 bg-card/90 p-1.5 shadow-lg backdrop-blur-sm md:right-6 md:scale-100 md:p-2"
       aria-label="Панель управления"
       role="toolbar"
     >

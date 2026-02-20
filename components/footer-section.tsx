@@ -20,11 +20,11 @@ export function FooterSection() {
 
   return (
     <footer
-      className="px-6 py-20 md:py-28 lg:px-8"
+      className="px-6 py-14 md:py-20 lg:py-28 lg:px-8"
       role="contentinfo"
     >
       {/* Gradient separator line */}
-      <div className="mx-auto mb-20 max-w-6xl md:mb-28">
+      <div className="mx-auto mb-14 max-w-6xl md:mb-20 lg:mb-28">
         <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" aria-hidden="true" />
       </div>
 

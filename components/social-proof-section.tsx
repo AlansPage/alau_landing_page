@@ -13,7 +13,7 @@ export function SocialProofSection() {
   return (
     <section
       aria-labelledby="testimonials"
-      className="relative px-6 py-16 md:py-24 lg:px-8"
+      className="relative px-6 py-16 md:py-24 lg:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute right-1/3 top-12 h-52 w-52 rounded-full bg-accent/8 blur-[120px]" />
@@ -33,7 +33,7 @@ export function SocialProofSection() {
         <div className="relative inline-block">
           <h2
             id="testimonials"
-            className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="anchor-target reveal text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
             data-reveal
           >
             {copy.title}
@@ -49,7 +49,7 @@ export function SocialProofSection() {
           {copy.quotes.map((quote, idx) => (
             <blockquote
               key={idx}
-              className="reveal hover-lift relative rounded-3xl border border-border/50 border-l-4 border-l-primary bg-card p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
+              className="reveal hover-lift relative rounded-3xl border border-border/50 border-l-4 border-l-primary bg-card p-5 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)] md:p-7"
               style={{ transitionDelay: `${180 + idx * 90}ms` }}
               data-reveal
             >

@@ -26,7 +26,7 @@ export function AudienceSection() {
   return (
     <section
       aria-labelledby="audience"
-      className="relative px-6 py-24 md:py-32 lg:px-8"
+      className="relative px-6 py-16 md:py-24 lg:py-32 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-1/2 top-10 h-64 w-[420px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
@@ -51,7 +51,7 @@ export function AudienceSection() {
         <div className="relative inline-block">
           <h2
             id="audience"
-            className="anchor-target reveal text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
+            className="anchor-target reveal text-balance text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl"
             data-reveal
           >
             {copy.title}
@@ -74,7 +74,7 @@ export function AudienceSection() {
               <article
                 key={card.title}
                 aria-label={card.ariaLabel}
-                className="hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-7 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
+                className="hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-border/50 bg-card p-5 shadow-lg shadow-background/40 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)] md:p-7"
               >
                 {/* Icon in rounded square container */}
                 <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-[#f3eee3] shadow-none backdrop-blur-none ring-1 ring-border/10">
