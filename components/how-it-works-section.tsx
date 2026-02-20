@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  MessageCircle,
-  ClipboardList,
-  MonitorPlay,
-  Briefcase,
-} from "lucide-react"
+import Image from "next/image"
 
 import { getI18n } from "@/lib/i18n"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
@@ -13,7 +8,12 @@ import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 import { StarFigure } from "@/components/decorations/star-figure"
 import { useLanguage } from "@/components/language-provider"
 
-const stepIcons = [MessageCircle, ClipboardList, MonitorPlay, Briefcase] as const
+const stepIcons = [
+  "/images/step-1-message.svg",
+  "/images/step-2-plan.svg",
+  "/images/step-3-study.svg",
+  "/images/step-4-work.svg",
+] as const
 
 export function HowItWorksSection() {
   const { lang } = useLanguage()
@@ -21,7 +21,7 @@ export function HowItWorksSection() {
   const steps = copy.steps.map((step, index) => ({
     number: index + 1,
     text: step.text,
-    icon: stepIcons[index],
+    iconSrc: stepIcons[index],
   }))
 
   return (
@@ -90,8 +90,12 @@ export function HowItWorksSection() {
                   className="hover-lift mt-5 w-full rounded-3xl border border-border/50 bg-card px-6 pb-6 pt-7 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
                 >
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
-                    <step.icon
-                      className="h-6 w-6 text-primary"
+                    <Image
+                      src={step.iconSrc}
+                      alt=""
+                      width={24}
+                      height={24}
+                      className="h-6 w-6"
                       aria-hidden="true"
                     />
                   </div>
@@ -123,8 +127,12 @@ export function HowItWorksSection() {
                     className="hover-lift rounded-3xl border border-border/50 bg-card px-6 py-5 shadow-sm shadow-background/30 transition-[border-color,box-shadow] hover:border-primary/30 hover:shadow-[0_0_20px_hsl(var(--flame-core)/0.08)]"
                   >
                     <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
-                      <step.icon
-                        className="h-5 w-5 text-primary"
+                      <Image
+                        src={step.iconSrc}
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="h-5 w-5"
                         aria-hidden="true"
                       />
                     </div>
