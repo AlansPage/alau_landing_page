@@ -66,11 +66,12 @@ export function FeaturesSection() {
         <div className="mt-16 flex flex-col">
           {copy.items.map((item, idx) => {
             const Icon = featureIcons[idx]
+            const reversed = idx % 2 !== 0
             return (
               <div key={idx}>
                 {/* Separator sparkle between rows */}
                 {idx > 0 && (
-                  <div className="flex justify-center py-8" aria-hidden="true">
+                  <div className="flex justify-center py-10" aria-hidden="true">
                     <SparkleStar
                       points={idx % 2 === 0 ? 6 : 4}
                       size={16}
@@ -86,19 +87,26 @@ export function FeaturesSection() {
                 )}
 
                 <div
-                  className="reveal flex flex-col gap-4"
+                  className={`reveal flex flex-col items-center gap-8 md:flex-row md:gap-14 ${reversed ? "md:flex-row-reverse" : ""}`}
                   style={{ transitionDelay: `${120 + idx * 90}ms` }}
                   data-reveal
                 >
-                  <div className="flex items-center gap-3">
-                    <Icon className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" />
+                  {/* Text side */}
+                  <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
                     <h3 className="text-xl font-semibold text-foreground md:text-2xl">
                       {item.title}
                     </h3>
+                    <p className="mt-3 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+                      {item.description}
+                    </p>
                   </div>
-                  <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
-                    {item.description}
-                  </p>
+
+                  {/* Visual side — icon panel */}
+                  <div className="flex flex-1 items-center justify-center">
+                    <div className="flex h-40 w-40 items-center justify-center rounded-3xl border border-primary/15 bg-primary/6 shadow-sm md:h-48 md:w-48">
+                      <Icon className="h-16 w-16 text-primary/70 md:h-20 md:w-20" aria-hidden="true" />
+                    </div>
+                  </div>
                 </div>
               </div>
             )
