@@ -13,10 +13,10 @@ import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
 
 const featureImages = [
-  { src: "/images/feature-voice.png", alt: "" },
-  { src: "/images/feature-contrast.png", alt: "" },
-  { src: "/images/feature-learning.png", alt: "" },
-  { src: "/images/feature-readiness.png", alt: "" },
+  { src: "/images/icon1.png", alt: "" },
+  { src: "/images/icon2.png", alt: "" },
+  { src: "/images/icon3.png", alt: "" },
+  { src: "/images/icon4.png", alt: "" },
 ] as const
 
 /* Separator sparkle between feature rows */
@@ -111,7 +111,7 @@ export function FeaturesSection() {
 
                   {/* Visual side — feature image */}
                   <div className="flex flex-1 items-center justify-center">
-                    <div className="relative h-48 w-48 md:h-56 md:w-56">
+                    <div className={`relative ${idx === 3 ? "h-56 w-56 md:h-64 md:w-64" : "h-48 w-48 md:h-56 md:w-56"}`}>
                       <Image
                         src={featureImages[idx].src}
                         alt={featureImages[idx].alt}

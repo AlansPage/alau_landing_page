@@ -506,23 +506,20 @@ export const I18N: Record<Language, I18nDict> = {
 }
 
 function mergeDeep<T extends Record<string, unknown>>(base: T, override?: Partial<T>): T {
-  const result = { ...base }
-  if (!override) return result
+  const result: Record<string, unknown> = { ...base }
+  if (!override) return result as T
   Object.keys(override).forEach((key) => {
     const value = override[key]
     if (Array.isArray(value) || typeof value !== "object" || value === null) {
       if (value !== undefined) {
-        result[key] = value as T[Extract<keyof T, string>]
+        result[key] = value
       }
       return
     }
     const baseValue = base[key] as Record<string, unknown>
-    result[key] = mergeDeep(baseValue ?? {}, value as Record<string, unknown>) as T[Extract<
-      keyof T,
-      string
-    >]
+    result[key] = mergeDeep(baseValue ?? {}, value as Record<string, unknown>)
   })
-  return result
+  return result as T
 }
 
 export function getI18n(lang: Language) {

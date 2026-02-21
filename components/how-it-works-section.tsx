@@ -1,17 +1,17 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import {
-  MessageCircle,
-  ClipboardList,
-  MonitorPlay,
-  Briefcase,
-} from "lucide-react"
+import Image from "next/image"
 
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
 
-const stepIcons = [MessageCircle, ClipboardList, MonitorPlay, Briefcase] as const
+const stepImages = [
+  { src: "/images/pi1.png", alt: "" },
+  { src: "/images/pi2.png", alt: "" },
+  { src: "/images/pi3.png", alt: "" },
+  { src: "/images/pi4.png", alt: "" },
+] as const
 
 export function HowItWorksSection() {
   const { lang } = useLanguage()
@@ -19,7 +19,7 @@ export function HowItWorksSection() {
   const steps = copy.steps.map((step, index) => ({
     number: index + 1,
     text: step.text,
-    icon: stepIcons[index],
+    image: stepImages[index],
   }))
 
   const sectionRef = useRef<HTMLElement>(null)
@@ -167,16 +167,20 @@ export function HowItWorksSection() {
                     </span>
 
                     <div className="relative flex items-start gap-6">
-                      {/* Icon circle */}
+                      {/* Step image */}
                       <div
-                        className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)] shadow-sm transition-transform duration-700"
+                        className="relative h-16 w-16 shrink-0 transition-transform duration-700"
                         style={{
                           transform: isVisible ? "scale(1)" : "scale(0.7)",
                           transitionDelay: isVisible ? "200ms" : "0ms",
                         }}
                       >
-                        <step.icon
-                          className="h-8 w-8 text-primary"
+                        <Image
+                          src={step.image.src}
+                          alt={step.image.alt}
+                          fill
+                          className="object-contain"
+                          sizes="64px"
                           aria-hidden="true"
                         />
                       </div>
@@ -209,9 +213,13 @@ export function HowItWorksSection() {
                   </span>
 
                   <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[hsl(var(--flame-deep)/0.1)] to-[hsl(var(--flame-hot)/0.1)]">
-                      <step.icon
-                        className="h-7 w-7 text-primary"
+                    <div className="relative h-14 w-14 shrink-0">
+                      <Image
+                        src={step.image.src}
+                        alt={step.image.alt}
+                        fill
+                        className="object-contain"
+                        sizes="56px"
                         aria-hidden="true"
                       />
                     </div>
