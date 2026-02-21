@@ -13,10 +13,10 @@ import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
 
 const featureImages = [
-  { src: "/images/access-vision.cutout.png", alt: "" },
-  { src: "/images/access-cognitive.cutout.png", alt: "" },
-  { src: "/images/access-hearing.cutout.png", alt: "" },
-  { src: "/images/access-motor.cutout.png", alt: "" },
+  { src: "/images/feature-voice.png", alt: "" },
+  { src: "/images/feature-contrast.png", alt: "" },
+  { src: "/images/feature-learning.png", alt: "" },
+  { src: "/images/feature-readiness.png", alt: "" },
 ] as const
 
 /* Separator sparkle between feature rows */
