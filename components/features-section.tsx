@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { Flame, Mic, SunMedium, MonitorPlay, ClipboardCheck } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
@@ -11,13 +10,6 @@ import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
 const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
-
-const featureImages = [
-  { src: "/images/icon1.png", alt: "" },
-  { src: "/images/icon2.png", alt: "" },
-  { src: "/images/icon3.png", alt: "" },
-  { src: "/images/icon4.png", alt: "" },
-] as const
 
 /* Separator sparkle between feature rows */
 const separatorColors = ["hsl(280 60% 65%)", "hsl(35 90% 60%)", "hsl(340 70% 65%)"]
@@ -74,12 +66,11 @@ export function FeaturesSection() {
         <div className="mt-16 flex flex-col">
           {copy.items.map((item, idx) => {
             const Icon = featureIcons[idx]
-            const reversed = idx % 2 !== 0
             return (
               <div key={idx}>
                 {/* Separator sparkle between rows */}
                 {idx > 0 && (
-                  <div className="flex justify-center py-10" aria-hidden="true">
+                  <div className="flex justify-center py-8" aria-hidden="true">
                     <SparkleStar
                       points={idx % 2 === 0 ? 6 : 4}
                       size={16}
@@ -95,32 +86,19 @@ export function FeaturesSection() {
                 )}
 
                 <div
-                  className={`reveal flex flex-col items-center gap-8 md:flex-row md:gap-14 ${reversed ? "md:flex-row-reverse" : ""}`}
+                  className="reveal flex flex-col gap-4"
                   style={{ transitionDelay: `${120 + idx * 90}ms` }}
                   data-reveal
                 >
-                  {/* Text side */}
-                  <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
+                  <div className="flex items-center gap-3">
+                    <Icon className="h-6 w-6 shrink-0 text-primary" aria-hidden="true" />
                     <h3 className="text-xl font-semibold text-foreground md:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="mt-3 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
-                      {item.description}
-                    </p>
                   </div>
-
-                  {/* Visual side — feature image */}
-                  <div className="flex flex-1 items-center justify-center">
-                    <div className={`relative ${idx === 3 ? "h-56 w-56 md:h-64 md:w-64" : "h-48 w-48 md:h-56 md:w-56"}`}>
-                      <Image
-                        src={featureImages[idx].src}
-                        alt={featureImages[idx].alt}
-                        fill
-                        className="object-contain opacity-95"
-                        sizes="(min-width: 768px) 224px, 192px"
-                      />
-                    </div>
-                  </div>
+                  <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             )

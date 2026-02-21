@@ -105,9 +105,9 @@
     /* Warm Cream Paper + Blue Fire Theme */
     --background: 32 30% 95%;
     --foreground: 222 47% 8%;
-    --card: 34 36% 92%;
+    --card: 34 12% 96%;
     --card-foreground: 222 47% 8%;
-    --popover: 34 25% 98%;
+    --popover: 34 8% 99%;
     --popover-foreground: 222 47% 8%;
     --primary: 212 100% 47%;
     --primary-foreground: 0 0% 100%;
@@ -125,9 +125,9 @@
     --radius: 0.75rem;
 
     /* Surface panel token (warm folded-crease) */
-    --surface: 30 22% 93%;
-    --paper-bg: 32 30% 95%;
-    --paper: 34 36% 92%;
+    --surface: 30 10% 96%;
+    --paper-bg: 32 12% 96%;
+    --paper: 34 12% 96%;
 
     /* Blue flame gradient tokens */
     --flame-deep: 220 80% 20%;

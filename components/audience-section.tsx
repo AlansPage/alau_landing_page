@@ -9,10 +9,10 @@ import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
 
 const audienceImages = [
-  { src: "/images/access-vision.cutout.png", alt: "" },
-  { src: "/images/access-hearing.cutout.png", alt: "" },
-  { src: "/images/access-motor.cutout.png", alt: "" },
-  { src: "/images/access-cognitive.cutout.png", alt: "" },
+  { src: "/images/useicon1.jpg", alt: "" },
+  { src: "/images/useicon2.jpg", alt: "" },
+  { src: "/images/useicon3.jpg", alt: "" },
+  { src: "/images/useicon4.jpg", alt: "" },
 ] as const
 
 export function AudienceSection() {
@@ -82,7 +82,8 @@ export function AudienceSection() {
                     src={card.image.src}
                     alt={card.image.alt}
                     fill
-                    className="object-contain object-center opacity-[0.95]"
+                    className="object-contain object-center"
+                    style={{ mixBlendMode: "multiply" }}
                     sizes="96px"
                   />
                 </div>

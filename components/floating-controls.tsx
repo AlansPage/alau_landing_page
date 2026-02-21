@@ -1,30 +1,17 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import Image from "next/image"
-import { ZoomIn, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
-import { useMagnifier } from "@/components/magnifier-provider"
 
 const BTN_CLASS =
   "interactive-ease flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl text-muted-foreground transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
 
 export function FloatingControls() {
-  const magnifierButtonRef = useRef<HTMLButtonElement | null>(null)
   const { lang, setLang } = useLanguage()
-  const {
-    enabled: magnifierEnabled,
-    toggle: toggleMagnifier,
-    setToggleButtonEl,
-  } = useMagnifier()
   const copy = getI18n(lang)
-
-  useEffect(() => {
-    setToggleButtonEl(magnifierButtonRef.current)
-    return () => setToggleButtonEl(null)
-  }, [setToggleButtonEl])
 
   const handleMenuToggle = () => {
     window.dispatchEvent(new CustomEvent("toggle-mobile-nav"))
@@ -55,24 +42,14 @@ export function FloatingControls() {
         {"KZ"}
       </button>
       <div className="h-px w-8 bg-border/30" aria-hidden="true" />
-      <button
-        ref={magnifierButtonRef}
-        type="button"
-        onClick={toggleMagnifier}
-        className={`${BTN_CLASS} ${magnifierEnabled ? "text-primary" : ""}`}
-        aria-label={copy.header.magnifierLabel}
-        aria-pressed={magnifierEnabled}
-      >
-        <ZoomIn className="h-5 w-5" aria-hidden="true" />
-      </button>
       <div className="pointer-events-none select-none" aria-hidden="true">
-        <div className="relative h-[40px] w-[40px] overflow-hidden rounded-lg opacity-80">
+        <div className="relative h-[52px] w-[52px] overflow-hidden rounded-lg opacity-85">
           <Image
             src="/images/accessibility-badge.png"
             alt=""
             fill
             className="object-cover"
-            sizes="40px"
+            sizes="52px"
           />
         </div>
       </div>
