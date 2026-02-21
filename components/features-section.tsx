@@ -1,6 +1,6 @@
 "use client"
 
-import { Flame, Mic, SunMedium, MonitorPlay, ClipboardCheck } from "lucide-react"
+import { Flame } from "lucide-react"
 
 import { LINKS } from "@/lib/site-config"
 import { getI18n } from "@/lib/i18n"
@@ -8,8 +8,6 @@ import { useLanguage } from "@/components/language-provider"
 import { StarFigure } from "@/components/decorations/star-figure"
 import { SparkleStar } from "@/components/decorations/sparkle-star"
 import { MiniSparkle } from "@/components/decorations/mini-sparkle"
-
-const featureIcons = [Mic, SunMedium, MonitorPlay, ClipboardCheck] as const
 
 /* Separator sparkle between feature rows */
 const separatorColors = ["hsl(280 60% 65%)", "hsl(35 90% 60%)", "hsl(340 70% 65%)"]
@@ -65,7 +63,6 @@ export function FeaturesSection() {
 
         <div className="mt-16 flex flex-col">
           {copy.items.map((item, idx) => {
-            const Icon = featureIcons[idx]
             const reversed = idx % 2 !== 0
             return (
               <div key={idx}>
@@ -101,12 +98,8 @@ export function FeaturesSection() {
                     </p>
                   </div>
 
-                  {/* Visual side — icon panel */}
-                  <div className="flex flex-1 items-center justify-center">
-                    <div className="flex h-40 w-40 items-center justify-center rounded-3xl border border-primary/15 bg-primary/6 shadow-sm md:h-48 md:w-48">
-                      <Icon className="h-16 w-16 text-primary/70 md:h-20 md:w-20" aria-hidden="true" />
-                    </div>
-                  </div>
+                  {/* Empty spacer — keeps checkerboard rhythm */}
+                  <div className="hidden flex-1 md:block" aria-hidden="true" />
                 </div>
               </div>
             )
