@@ -1,9 +1,17 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 
 import { getI18n } from "@/lib/i18n"
 import { useLanguage } from "@/components/language-provider"
+
+const stepIcons = [
+  "/images/icon1.png",
+  "/images/icon2.png",
+  "/images/icon3.png",
+  "/images/icon4.png",
+]
 
 export function HowItWorksSection() {
   const { lang } = useLanguage()
@@ -11,6 +19,7 @@ export function HowItWorksSection() {
   const steps = copy.steps.map((step, index) => ({
     number: index + 1,
     text: step.text,
+    icon: stepIcons[index],
   }))
 
   const sectionRef = useRef<HTMLElement>(null)
@@ -149,16 +158,34 @@ export function HowItWorksSection() {
                   }}
                 >
                   <div className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card px-10 py-10 shadow-sm transition-shadow duration-500 hover:shadow-[0_0_60px_hsl(var(--flame-core)/0.07)]">
-                    {/* Watermark number */}
-                    <span
-                      className="pointer-events-none absolute right-6 top-2 select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-[8rem] font-black leading-none text-transparent opacity-[0.06]"
-                      aria-hidden="true"
-                    >
-                      {step.number}
-                    </span>
-
                     <div className="relative flex items-start gap-6">
-                      <div className="pt-3">
+                      {/* Number + icon stacked together */}
+                      <div className="flex shrink-0 flex-col items-center gap-1">
+                        <span
+                          className="select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-4xl font-black leading-none text-transparent opacity-40"
+                          aria-hidden="true"
+                        >
+                          {step.number}
+                        </span>
+                        <div
+                          className="relative h-16 w-16 transition-transform duration-700"
+                          style={{
+                            transform: isVisible ? "scale(1)" : "scale(0.7)",
+                            transitionDelay: isVisible ? "200ms" : "0ms",
+                          }}
+                        >
+                          <Image
+                            src={step.icon}
+                            alt=""
+                            fill
+                            className="object-contain"
+                            sizes="64px"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="pt-1">
                         <p className="text-2xl font-bold leading-relaxed text-foreground">
                           {step.text}
                         </p>
@@ -177,17 +204,30 @@ export function HowItWorksSection() {
             {steps.map((step, i) => (
               <li key={step.number}>
                 <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card p-8 shadow-sm">
-                  {/* Watermark number */}
-                  <span
-                    className="pointer-events-none absolute right-4 top-2 select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-5xl font-black leading-none text-transparent opacity-[0.08]"
-                    aria-hidden="true"
-                  >
-                    {step.number}
-                  </span>
-
-                  <p className="text-xl font-bold leading-relaxed text-foreground">
-                    {step.text}
-                  </p>
+                  <div className="flex items-start gap-4">
+                    {/* Number + icon stacked */}
+                    <div className="flex shrink-0 flex-col items-center gap-1">
+                      <span
+                        className="select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-3xl font-black leading-none text-transparent opacity-40"
+                        aria-hidden="true"
+                      >
+                        {step.number}
+                      </span>
+                      <div className="relative h-14 w-14">
+                        <Image
+                          src={step.icon}
+                          alt=""
+                          fill
+                          className="object-contain"
+                          sizes="56px"
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </div>
+                    <p className="pt-1 text-xl font-bold leading-relaxed text-foreground">
+                      {step.text}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Flame line segment between cards */}
