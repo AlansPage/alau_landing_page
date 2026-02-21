@@ -158,39 +158,38 @@ export function HowItWorksSection() {
                   }}
                 >
                   <div className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card px-10 py-10 shadow-sm transition-shadow duration-500 hover:shadow-[0_0_60px_hsl(var(--flame-core)/0.07)]">
-                    <div className="relative flex items-start gap-6">
-                      {/* Number + icon stacked together */}
-                      <div className="flex shrink-0 flex-col items-center gap-1">
-                        <span
-                          className="select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-4xl font-black leading-none text-transparent opacity-40"
-                          aria-hidden="true"
-                        >
-                          {step.number}
-                        </span>
-                        <div
-                          className="relative h-16 w-16 transition-transform duration-700"
-                          style={{
-                            transform: isVisible ? "scale(1)" : "scale(0.7)",
-                            transitionDelay: isVisible ? "200ms" : "0ms",
-                          }}
-                        >
-                          <Image
-                            src={step.icon}
-                            alt=""
-                            fill
-                            className="object-contain"
-                            sizes="64px"
-                            aria-hidden="true"
-                          />
-                        </div>
-                      </div>
+                    {/* Watermark number */}
+                    <span
+                      className="pointer-events-none absolute right-6 top-2 select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-[8rem] font-black leading-none text-transparent opacity-[0.06]"
+                      aria-hidden="true"
+                    >
+                      {step.number}
+                    </span>
 
-                      <div className="pt-1">
-                        <p className="text-2xl font-bold leading-relaxed text-foreground">
-                          {step.text}
-                        </p>
+                    {/* Icon — large, centered */}
+                    <div className="relative flex justify-center">
+                      <div
+                        className="relative h-40 w-40 transition-transform duration-700"
+                        style={{
+                          transform: isVisible ? "scale(1)" : "scale(0.7)",
+                          transitionDelay: isVisible ? "200ms" : "0ms",
+                        }}
+                      >
+                        <Image
+                          src={step.icon}
+                          alt=""
+                          fill
+                          className="object-contain"
+                          sizes="160px"
+                          aria-hidden="true"
+                        />
                       </div>
                     </div>
+
+                    {/* Text below icon */}
+                    <p className="mt-6 text-center text-2xl font-bold leading-relaxed text-foreground">
+                      {step.text}
+                    </p>
                   </div>
                 </li>
               )
@@ -204,30 +203,31 @@ export function HowItWorksSection() {
             {steps.map((step, i) => (
               <li key={step.number}>
                 <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card p-8 shadow-sm">
-                  <div className="flex items-start gap-4">
-                    {/* Number + icon stacked */}
-                    <div className="flex shrink-0 flex-col items-center gap-1">
-                      <span
-                        className="select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-3xl font-black leading-none text-transparent opacity-40"
+                  {/* Watermark number */}
+                  <span
+                    className="pointer-events-none absolute right-4 top-2 select-none bg-gradient-to-r from-[hsl(var(--flame-deep))] via-[hsl(var(--flame-core))] to-[hsl(var(--flame-hot))] bg-clip-text text-5xl font-black leading-none text-transparent opacity-[0.08]"
+                    aria-hidden="true"
+                  >
+                    {step.number}
+                  </span>
+
+                  {/* Icon — large, centered */}
+                  <div className="flex justify-center">
+                    <div className="relative h-32 w-32">
+                      <Image
+                        src={step.icon}
+                        alt=""
+                        fill
+                        className="object-contain"
+                        sizes="128px"
                         aria-hidden="true"
-                      >
-                        {step.number}
-                      </span>
-                      <div className="relative h-14 w-14">
-                        <Image
-                          src={step.icon}
-                          alt=""
-                          fill
-                          className="object-contain"
-                          sizes="56px"
-                          aria-hidden="true"
-                        />
-                      </div>
+                      />
                     </div>
-                    <p className="pt-1 text-xl font-bold leading-relaxed text-foreground">
-                      {step.text}
-                    </p>
                   </div>
+
+                  <p className="mt-5 text-center text-xl font-bold leading-relaxed text-foreground">
+                    {step.text}
+                  </p>
                 </div>
 
                 {/* Flame line segment between cards */}
